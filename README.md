@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UX Core Technologies — Website
 
-## Getting Started
+Next.js (App Router, TypeScript) + Tailwind CSS v4 + Framer Motion. Dark, motion-forward
+agency site inspired by the quality bar of martiancorporation.com — original design,
+layout, and code throughout.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. `npm run build && npm run lint` before shipping any change.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 16 (App Router)** — file-based routing, static generation for every page except `/api/contact`.
+- **Tailwind CSS v4** — design tokens (colors, fonts, animations) defined in [src/app/globals.css](src/app/globals.css).
+- **Framer Motion** — scroll reveals ([src/components/ui/reveal.tsx](src/components/ui/reveal.tsx)), animated counters, mobile menu.
+- **Radix UI** — accessible accordion (FAQ) and building blocks for future menus/dialogs.
+- **React Hook Form + Zod** — contact form validation ([src/lib/schemas/contact.ts](src/lib/schemas/contact.ts)).
+- **Embla Carousel** — testimonials slider.
+- **lucide-react** — icon set (brand logos like LinkedIn/GitHub are hand-drawn SVGs in [src/components/ui/social-icons.tsx](src/components/ui/social-icons.tsx) since lucide dropped brand icons).
 
-## Learn More
+## Where everything lives
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/                    routes: /, /services, /work, /work/[slug], /about, /blog, /blog/[slug], /contact
+  app/api/contact/        form submission handler (currently logs only — see below)
+  components/layout/      Navbar, Footer
+  components/sections/    homepage sections (Hero, Services, Stats, FAQ, ...)
+  components/ui/          design-system primitives (Button, Container, PlaceholderMedia, ...)
+  components/forms/       ContactForm
+  lib/data/               ALL COPY LIVES HERE — services, projects, blog posts, FAQ, stats, testimonials
+  lib/schemas/            Zod validation schemas
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Swapping in real content (no code changes needed for most of it)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Everything text-based is centralized in `src/lib/data/*.ts`:
 
-## Deploy on Vercel
+- [site.ts](src/lib/data/site.ts) — company name, email, phone, address, social links
+- [services.ts](src/lib/data/services.ts) — the 8 service offerings
+- [projects.ts](src/lib/data/projects.ts) — case studies (challenge/solution/results)
+- [blog.ts](src/lib/data/blog.ts) — articles
+- [misc.ts](src/lib/data/misc.ts) — stats, industries, process steps, FAQ, testimonials
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Edit the values directly — the site rebuilds automatically in dev.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Swapping in real graphics/assets
+
+Every image is currently a labeled `<PlaceholderMedia>` block
+([src/components/ui/placeholder-media.tsx](src/components/ui/placeholder-media.tsx)) so it's
+obvious what's a stand-in. Once the design team delivers assets:
+
+1. Drop files into `public/images/...`
+2. Replace the `<PlaceholderMedia label="..." />` usage with Next's `<Image src="/images/..." fill alt="..." />`
+3. Recommended sizes: hero/case-study covers 1600×1100, team headshots 400×400 (square), logos as SVG where possible.
+
+## Contact form
+
+The form fully validates and submits today (`POST /api/contact`), but the handler
+([src/app/api/contact/route.ts](src/app/api/contact/route.ts)) only logs the submission —
+it does **not** send an email yet. Before launch, wire it to a real provider (Resend,
+SendGrid, or a CRM webhook) using that provider's API key as an environment variable.
+
+## Deployment
+
+Deploys cleanly to Vercel (zero-config) or any Node host that supports Next.js.
+Set `metadataBase` in [src/app/layout.tsx](src/app/layout.tsx) and the sitemap/robots
+base URLs in [src/app/sitemap.ts](src/app/sitemap.ts) / [src/app/robots.ts](src/app/robots.ts)
+to the real production domain before launch.
