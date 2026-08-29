@@ -1,26 +1,184 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens are sourced directly from the UX Core Technologies logo:
+ *   ink       #142A4B  (wordmark navy / dark-section base)
+ *   blue      #104DFC  (X-mark + dot-trail gradient start)
+ *   violet    #5F2BC9  (X-mark + dot-trail gradient end)
+ *   magenta   #882BD8  (CORE wordmark gradient end)
+ *   off-white #F4F4F4  (logo's on-dark ink)
+ *
+ * Two tones are supported: the default (light) root, and `.tone-dark`,
+ * which sections opt into to alternate light/dark bands down the page.
+ * Because every component is built on these semantic variables (not raw
+ * colors), wrapping any section in `.tone-dark` re-themes it completely.
+ */
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --surface: #f5f7fc;
+  --surface-2: #eaeef8;
+  --border: #e6e9f2;
+  --border-strong: #cfd4e4;
+  --control-border: #8890a8;
+  --foreground: #142a4b;
+  --muted: #565f78;
+  --muted-2: #6a7290;
+  --primary: #104dfc;
+  --primary-foreground: #ffffff;
+  --accent: #5f2bc9;
+  --accent-warm: #882bd8;
+  --label-accent: #a8551d;
+  --brand-blue: #104dfc;
+  --brand-violet: #5f2bc9;
+  --brand-magenta: #882bd8;
+  --brand-ink: #142a4b;
+  --gradient-hero: radial-gradient(ellipse 60% 55% at 8% 15%, rgba(16, 77, 252, 0.08), transparent 60%),
+    radial-gradient(ellipse 55% 50% at 100% 0%, rgba(136, 43, 216, 0.07), transparent 60%);
+}
+
+.tone-dark {
+  --background: #142a4b;
+  --surface: #1c3766;
+  --surface-2: #234480;
+  --border: rgba(244, 244, 244, 0.1);
+  --border-strong: rgba(244, 244, 244, 0.22);
+  --control-border: rgba(244, 244, 244, 0.45);
+  --foreground: #f4f4f4;
+  --muted: #b9c4de;
+  --muted-2: #91a1c6;
+  --primary: #8bacff;
+  --primary-foreground: #ffffff;
+  --accent: #c6a9f5;
+  --accent-warm: #f0a8e0;
+  --label-accent: #ffc38a;
+  --gradient-hero: radial-gradient(ellipse 60% 55% at 8% 10%, rgba(139, 172, 255, 0.16), transparent 60%),
+    radial-gradient(ellipse 55% 50% at 100% 0%, rgba(198, 169, 245, 0.14), transparent 60%);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-control-border: var(--control-border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-warm: var(--accent-warm);
+  --color-label-accent: var(--label-accent);
+  --color-brand: var(--brand-blue);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-magenta: var(--brand-magenta);
+  --color-brand-ink: var(--brand-ink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-sora);
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 36s linear infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-drift: drift 22s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(-2%, 3%) rotate(4deg);
+    }
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 24%, white);
+  color: var(--foreground);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--foreground) 10%, var(--primary) 55%, var(--accent-warm) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Skip-to-content link: visually hidden until keyboard-focused */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 200;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
