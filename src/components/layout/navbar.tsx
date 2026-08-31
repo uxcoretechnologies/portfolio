@@ -42,7 +42,7 @@ export function Navbar() {
       <Container>
         <nav className="flex h-16 items-center justify-between" aria-label="Primary">
           <Link href="/" aria-label="UX Core Technologies home" className="flex items-center">
-            <Logo variant="color" height={34} />
+            <Logo variant="color" className="h-6 w-auto sm:h-[34px]" />
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">

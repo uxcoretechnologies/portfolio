@@ -9,6 +9,20 @@ export type Project = {
   results: { label: string; value: string }[];
   tags: string[];
   color: string; // placeholder gradient accent per case study
+
+  // Extended case-study fields — optional so older/lighter entries still
+  // render fine; the detail page shows each section only when present.
+  tagline?: string;
+  client?: string;
+  servicesProvided?: string[];
+  techStack?: { name: string; icon: string }[];
+  showcaseHeadline?: string;
+  showcaseTagline?: string;
+  requirementsIntro?: string;
+  requirements?: string[];
+  approach?: string;
+  gallery?: string[];
+  testimonial?: { quote: string; name: string; role: string };
 };
 
 export const projects: Project[] = [
@@ -29,6 +43,48 @@ export const projects: Project[] = [
     ],
     tags: ["Mobility", "EV"],
     color: "from-violet-500/30 to-cyan-400/20",
+    tagline: "Real-time EV charging discovery, built for scale",
+    client: "Confidential",
+    servicesProvided: [
+      "Mobile App Development",
+      "Maps & Location Integration",
+      "Backend Development",
+      "UI/UX Design",
+      "Performance Optimization",
+    ],
+    techStack: [
+      { name: "React Native", icon: "Smartphone" },
+      { name: "Node.js", icon: "Code2" },
+      { name: "MongoDB", icon: "Database" },
+      { name: "Google Maps API", icon: "MapPin" },
+      { name: "Figma", icon: "PenTool" },
+    ],
+    showcaseHeadline: "VOLTPATH",
+    showcaseTagline: "Charge anywhere, anytime",
+    requirementsIntro:
+      "Placeholder: the platform needed to handle real-time location data, live charger availability, and session management at national scale without compromising on speed.",
+    requirements: [
+      "Real-time charger discovery based on live GPS location",
+      "Turn-by-turn navigation and directions to the nearest station",
+      "Live availability status per charging bay",
+      "Smooth, low-latency mobile experience across low-end devices",
+      "A backend built to handle spikes in concurrent charging sessions",
+    ],
+    approach:
+      "Placeholder: an iterative, two-week sprint cycle let the team validate the charger-discovery UX with real drivers early, refining the map interaction and booking flow before locking the final release.",
+    gallery: [
+      "Map & charger discovery screen",
+      "Charger detail & availability view",
+      "Live charging session screen",
+      "Payment & receipt flow",
+      "Account & vehicle profile screen",
+    ],
+    testimonial: {
+      quote:
+        "Placeholder: the team delivered exactly what we needed — a fast, reliable app our drivers actually enjoy using. Their attention to detail on the charging flow specifically set them apart.",
+      name: "Placeholder Name",
+      role: "Founder, VoltPath",
+    },
   },
   {
     slug: "buildyard",

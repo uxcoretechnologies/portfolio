@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { PlaceholderMedia } from "@/components/ui/placeholder-media";
 import { Reveal } from "@/components/ui/reveal";
 import { Band } from "@/components/ui/band";
 import { ContactCTA } from "@/components/sections/contact-cta";
@@ -62,7 +62,16 @@ export default async function PostPage({
           </Reveal>
 
           <Reveal delay={0.05} className="mt-10">
-            <PlaceholderMedia label="Article cover image" ratio="aspect-[16/9]" />
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border bg-surface-2">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+              />
+            </div>
           </Reveal>
 
           <Reveal delay={0.1} className="prose prose-invert mt-10 max-w-none">

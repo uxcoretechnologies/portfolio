@@ -1,14 +1,12 @@
 # Asset Generation Briefs
 
-This document is a generation brief for every placeholder image currently on
-the UX Core Technologies website — one prompt per asset, written to be pasted
-directly into an image-generation tool (Antigravity or otherwise). Hero
-section artwork is intentionally excluded — that graphic is coded (CSS/SVG),
-not an image, and is out of scope here.
+This document is a generation brief for every placeholder asset currently on
+the UX Core Technologies website — one prompt per asset, written to be
+pasted directly into a generation tool (Antigravity or otherwise).
 
-Each entry gives you: where the file goes, the exact pixel size to generate
-at, and a full prompt. Generate at the listed size (or larger, same aspect
-ratio) so the image stays sharp on retina displays — the site will scale it
+Each entry gives you: where the file goes, the exact size to generate at,
+and a full prompt. Generate at the listed size (or larger, same aspect
+ratio) so the asset stays sharp on retina displays — the site will scale it
 down, never up.
 
 ---
@@ -18,36 +16,112 @@ down, never up.
 Paste this block before each individual prompt, or keep it as a system/style
 prompt if your tool supports one. Every asset should feel like it comes from
 the same photoshoot and the same design system — that consistency matters
-more than any single image looking good in isolation.
+more than any single asset looking good in isolation.
 
 ```
 Brand: UX Core Technologies — a UX-led software design and engineering studio.
 Mood: premium, precise, confident, modern SaaS/tech — never cluttered,
 never "startup-generic," never overly futuristic/sci-fi.
-Color palette to favor or accent within images (use as environment lighting,
-props, screen UI, or wardrobe accents — not as a heavy-handed color grade):
+Color palette to favor or accent (use as environment lighting, props,
+screen UI, or wardrobe accents — not as a heavy-handed color grade):
   - Ink navy:   #142A4B
   - Brand blue: #104DFC
   - Violet:     #5F2BC9
   - Magenta:    #882BD8
   - Off-white:  #F4F4F4
 Lighting: soft, natural, diffused — avoid hard flash or neon cyberpunk
-lighting. Avoid stock-photo clichés (fist bumps, exaggerated laughing at
-laptops, green screen backgrounds, floating holographic UI in mid-air).
-Camera/render quality: sharp focus, realistic depth of field, no visible
-AI artifacts (extra fingers, warped text, melted objects, inconsistent
-shadows). If any UI/screen content appears in the shot, it must be
-legible, grid-aligned, and internally consistent — no gibberish text.
+lighting. Avoid stock-photo/stock-footage clichés (fist bumps, exaggerated
+laughing at laptops, green screen backgrounds, floating holographic UI in
+mid-air, glowing brains, humanoid robots).
+Quality: sharp focus, realistic depth of field, no visible AI artifacts
+(extra fingers, warped text, melted objects, inconsistent shadows). If any
+UI/screen content appears, it must be legible, grid-aligned, and internally
+consistent — no gibberish text.
 ```
 
 ---
 
-## 1. Case study covers (6 images)
+## 1. Hero section video (right side) — status: build in code, not generated
 
-Each project needs **one** high-resolution source image. The site crops the
-same file into two contexts — a 16:11 grid card and a 16:8 hero banner on the
-project's detail page — so compose the subject centered with breathing room
-top and bottom, nothing important tight against the left/right edges.
+**Placement:** the right side of the hero, where a coded abstract graphic
+(`HeroArt`) currently sits.
+
+**Decision:** the target reference for this — [yavar.ai](https://yavar.ai)'s
+hero — turned out to be a genuine screen-recording of their own product, not
+an AI-generated video. Pulling frames from it (downloaded the source `.mov`
+and sampled it with `ffmpeg` across its 27-second runtime) showed why it
+reads so well: it's dense, legible, multi-panel software UI — a floating
+white app window on a black backdrop that runs through a real 5-act product
+story, with synced captions that reposition partway through:
+
+1. **The Canvas** — "Start with a blank idea." A blank workflow canvas with
+   a palette of node types.
+2. **01 · Prompt** — "One prompt." The user types one plain-language request
+   into a chat input.
+3. **02 · Plan** — "It asks what it needs to know." The agent asks 2–3
+   clarifying questions with quick-select answers; the user submits.
+4. **Execute Mode** (layout shifts: caption moves to top-center, the window
+   goes full-width) — "A full workflow, in seconds." A branching workflow
+   diagram builds itself node by node, live — including an approval/
+   rejection split — with connecting lines drawing in.
+5. **Documentation** — "A BRD writes itself." A second panel appears
+   showing a named multi-agent pipeline (each step marked Done/Running/
+   Pending) next to a requirements document generating in real time.
+
+Small dot-pagination at the bottom tracks progress through the acts. This
+level of legible, continuous, multi-panel UI storytelling is exactly what
+current text-to-video models (whichever one Antigravity ends up routing to)
+are worst at — dense on-screen text and diagrams over 20+ seconds would
+very likely come back garbled, not "exactly like it." **Decided approach:**
+build this for real, in code, using the project's own React + Framer Motion
+stack — pixel-perfect, on-brand, zero AI-video-artifact risk — either running
+live in the hero or screen-recorded to a video file afterward. **This is
+deferred to a future session, not built today.**
+
+### The plan for that future session
+
+Reskin the same 5-act structure to UX Core Technologies, tied to a service
+we actually offer (AI Agent Automation) with a concrete, relatable process
+rather than an abstract one — e.g. an **automated refund-approval workflow**:
+
+1. Blank canvas in a fictional "UX Core — Agent Studio" UI.
+2. User prompt: "I need to automate customer refund approvals."
+3. Agent asks: "What refund threshold needs manual approval?" / "Where
+   should approved refunds be logged?" — quick-select answers, submit.
+4. A branching workflow builds live: Refund Request Received → Validate
+   Order → Check Refund Policy → Amount ≤ Threshold? → splits to
+   Auto-Approve & Refund (green) or Route to Manager (escalation) → Log to
+   Finance System.
+5. A short pipeline (Workflow Interpreter → Policy Reviewer →
+   Documentation Agent → Validator) generates a one-page runbook live.
+
+Same visual language as the reference — floating light app window, dark
+backdrop, brand blue (#104DFC) as the primary UI accent, caption panel that
+relocates from right-side to top-center between acts 3 and 4, bottom
+dot-pagination. Realistically ~24–28 seconds given the depth, muted,
+looping. **Aspect ratio note:** the reference runs wide (~8:5 native,
+letterboxed even wider on the page) — the current hero art slot is a
+square, so this will need the hero's right column widened to do the UI
+justice; flag that as part of the implementation work, not something to
+route around.
+
+**Implementation note:** whenever this gets built, it replaces `<HeroArt />`
+with either a live animated component or a `<video autoPlay muted loop
+playsInline poster="...">` element in the same hero slot, matching the
+approach already documented for other assets in this file.
+
+---
+
+## 2. Case study covers (6 images), plus VoltPath's full detail-page set
+
+Each project needs **one** high-resolution cover image for the grid cards.
+VoltPath is the pilot case study — its detail page (`/work/voltpath`) now
+follows the fuller structure researched from
+[martiancorporation.com/case-studies/ev-india](https://martiancorporation.com/case-studies/ev-india)
+(overview, a showcase break, requirements, a screen gallery, and a
+testimonial), so it needs several additional images beyond the cover. The
+other five projects still use the simpler cover-only treatment below until
+you're ready to expand them the same way.
 
 **Generate at:** 2400 × 1650 px, JPG, quality 90+
 **Style:** a realistic device mockup (laptop and/or phone, angled 3/4 or
@@ -57,9 +131,9 @@ floating on white — give it physical context (a desk, a hand holding a
 phone, a studio surface) so it reads as a real product photo, not a UI kit
 export.
 
-### 1a. VoltPath — EV charging app
+### 2a. VoltPath — EV charging app (cover)
 **File:** `/public/images/work/voltpath-cover.jpg`
-**Used on:** homepage "Our latest creations", `/work`, `/work/voltpath`
+**Used on:** homepage "Our latest creations", `/work`
 
 > A smartphone held at a slight angle in a driver's hand, screen showing a
 > clean EV-charging app UI: a map view with pin markers for charging
@@ -68,9 +142,86 @@ export.
 > at a charging station at dusk, soft blue-violet ambient light, shallow
 > depth of field blurring the car and charger into a soft bokeh. The phone
 > screen is the sharp focal point. Convey: mobility, clean energy, calm
-> confidence.
+> confidence. Compose with generous headroom on all sides — this same shot
+> also needs to crop cleanly to a square for the detail-page hero (2a-i
+> below covers that crop specifically if you'd rather generate it separately).
 
-### 1b. Buildyard — construction site management app
+---
+
+#### VoltPath detail page — additional images (7)
+
+These back the sections unique to VoltPath's expanded template. All should
+feel like screenshots from the **same** app as the cover above — same UI
+kit, same blue accent, same map-and-charging visual language — so the page
+reads as one consistent product, not six unrelated renders.
+
+##### 2a-i. Hero mockup (square)
+**File:** `/public/images/work/voltpath-hero.jpg`
+**Used on:** `/work/voltpath` hero, right column
+**Generate at:** 1600 × 1600 px, JPG
+
+> A smartphone centered and held upright (portrait, facing the camera
+> straight-on this time rather than angled), screen showing the VoltPath
+> app's main map/discovery screen — charging station pins, a bottom sheet
+> with a station name and a blue "Navigate" button. Clean, soft studio
+> background in a very light gray or pale blue-white gradient (no outdoor
+> scene this time — this version needs to sit calmly beside text, not
+> compete with it). The phone fills most of the frame with even margin on
+> all sides so it crops well to a perfect square.
+
+##### 2a-ii. Showcase poster (portrait)
+**File:** `/public/images/work/voltpath-showcase.jpg`
+**Used on:** `/work/voltpath`, the dark full-width "VOLTPATH — Charge
+anywhere, anytime" break in the middle of the page
+**Generate at:** 1200 × 2100 px, JPG (roughly 4:7)
+
+> A single smartphone, dead-center, facing the camera straight-on, shown
+> larger and more dramatic than the hero shot — like a poster/key-art
+> product shot. Screen shows the same app's charging-session-in-progress
+> screen: a large circular progress ring showing charge percentage, the
+> car's estimated range ticking up, in brand blue. Background: a soft,
+> dark gradient fading from ink navy (#142A4B) at the edges to a slightly
+> lighter navy glow directly behind the phone, since this image sits on a
+> dark section of the page — make sure the phone and its screen are bright
+> enough to stand out clearly against that dark backdrop. Minimal, epic,
+> centered — this is the one "hero shot" moment of the whole case study.
+
+##### 2a-iii. Fanned app screens (square-ish)
+**File:** `/public/images/work/voltpath-requirements-fan.jpg`
+**Used on:** `/work/voltpath`, beside the "Defining Project Requirements" list
+**Generate at:** 1400 × 1200 px, JPG
+
+> Three to four phone mockups fanned out and overlapping like a hand of
+> playing cards, each showing a different VoltPath app screen (map
+> discovery, charger detail, a live charging session, payment/receipt) —
+> the front-most phone facing the camera straight-on, the others fanned
+> behind it at increasing angles to the left and right. Soft studio
+> lighting on a warm, light cream/beige background (not white — something
+> soft and warm to contrast with the app's blue UI). Subtle drop shadows
+> under the phones for depth. Convey: a confident, finished, multi-screen
+> product — this is a "look how much we built" moment, not a planning
+> artifact.
+
+##### 2a-iv to 2a-viii. Screen gallery (5 images)
+**Used on:** `/work/voltpath`, the "More screens" grid
+**Generate at:** 1080 × 1920 px each, JPG (9:16, phone-screen shaped)
+**Style:** a plain phone screen mockup for each — no hand, no background
+scene, just the device facing the camera straight-on against a plain
+light-gray studio background, consistent across all five so they read as
+one gallery. Same blue accent color and UI style as the cover and hero
+images above.
+
+| File | Screen to depict |
+|---|---|
+| `/public/images/work/voltpath-gallery-1.jpg` | Map & charger discovery screen — a full-screen map with several pin markers, a search bar at top, a bottom sheet card peeking up showing one station's name and distance. |
+| `/public/images/work/voltpath-gallery-2.jpg` | Charger detail & availability view — a station name and photo at top, a grid of charging bay icons color-coded (available in blue, in-use in gray), and a blue "Navigate" button. |
+| `/public/images/work/voltpath-gallery-3.jpg` | Live charging session screen — a large circular progress ring mid-charge, kWh delivered and estimated time remaining below it, a "Stop Charging" text link. |
+| `/public/images/work/voltpath-gallery-4.jpg` | Payment & receipt flow — a clean receipt-style summary: session duration, kWh used, total cost, and a blue "Pay Now" button. |
+| `/public/images/work/voltpath-gallery-5.jpg` | Account & vehicle profile screen — a profile header with a name and avatar placeholder, and a simple vehicle card below showing a car icon, model name, and battery range. |
+
+---
+
+### 2b. Buildyard — construction site management app
 **File:** `/public/images/work/buildyard-cover.jpg`
 **Used on:** `/work`, `/work/buildyard`
 
@@ -81,7 +232,7 @@ export.
 > silhouette, warm natural light. The device and its screen are the sharp
 > focal point. Convey: field-ready reliability, organization amid complexity.
 
-### 1c. Kolkata Mart — e-commerce marketplace
+### 2c. Kolkata Mart — e-commerce marketplace
 **File:** `/public/images/work/kolkata-mart-cover.jpg`
 **Used on:** `/work`, `/work/kolkata-mart`
 
@@ -91,7 +242,7 @@ export.
 > and notebook in the foreground for depth. Neutral desk surface (light
 > wood or matte white). Convey: speed, trustworthy checkout, retail polish.
 
-### 1d. AssetFlow — enterprise asset management dashboard
+### 2d. AssetFlow — enterprise asset management dashboard
 **File:** `/public/images/work/assetflow-cover.jpg`
 **Used on:** `/work`, `/work/assetflow`
 
@@ -102,7 +253,7 @@ export.
 > most of the frame. Soft daylight from an out-of-focus window in the
 > background. Convey: control, clarity, enterprise-grade trust.
 
-### 1e. Ashsheefa Health — hospital patient app
+### 2e. Ashsheefa Health — hospital patient app
 **File:** `/public/images/work/ashsheefa-health-cover.jpg`
 **Used on:** `/work`, `/work/ashsheefa-health`
 
@@ -113,7 +264,7 @@ export.
 > the background, nothing clinical or cold. Convey: reassurance, simplicity,
 > approachable healthcare.
 
-### 1f. ManageOps — operations workflow platform
+### 2f. ManageOps — operations workflow platform
 **File:** `/public/images/work/manageops-cover.jpg`
 **Used on:** `/work`, `/work/manageops`
 
@@ -125,7 +276,7 @@ export.
 
 ---
 
-## 2. Team & company photography (6 images)
+## 3. Team & company photography (6 images)
 
 > **Important honesty note:** the four "leadership" headshots below are
 > currently placeholder *names* (Founder & CEO, Head of Design, etc.) —
@@ -135,7 +286,7 @@ export.
 > a specific named leader to site visitors is misleading once the company
 > is live — flag this to whoever owns final content sign-off.
 
-### 2a. Homepage "Why UX Core" photo
+### 3a. Homepage "Why UX Core" photo
 **File:** `/public/images/home/why-us-team.jpg`
 **Used on:** homepage, "Why UX Core" section (dark navy background band)
 **Generate at:** 1600 × 1600 px, JPG
@@ -148,7 +299,7 @@ export.
 > photo itself has enough brightness and contrast to hold its own — avoid
 > a low-key/moody grade. Convey: collaborative, senior, hands-on.
 
-### 2b. About page team/office banner
+### 3b. About page team/office banner
 **File:** `/public/images/about/office-banner.jpg`
 **Used on:** `/about`, wide banner below the intro
 **Generate at:** 2520 × 1080 px, JPG (21:9)
@@ -158,7 +309,7 @@ export.
 > in ink navy or brand blue, minimal decor. Documentary/editorial style,
 > not staged. Convey: a real, established, well-run studio.
 
-### 2c–2f. Leadership headshots (4 images)
+### 3c–3f. Leadership headshots (4 images)
 **Files:**
 `/public/images/about/team/founder-ceo.jpg`
 `/public/images/about/team/head-of-design.jpg`
@@ -178,7 +329,7 @@ export.
 
 ---
 
-## 3. Blog / insights cover images (5 images)
+## 4. Blog / insights cover images (5 images)
 
 **Generate at:** 1920 × 1080 px, JPG (16:9), one per article
 **Style:** abstract editorial illustration/render, not a literal photo of
@@ -187,7 +338,7 @@ well-designed engineering blog: a single clear visual metaphor rendered in
 the brand palette, clean negative space, no text or typography baked into
 the image (the site overlays its own title text elsewhere).
 
-### 3a. "AI in Digital Transformation: Opportunities for Businesses"
+### 4a. "AI in Digital Transformation: Opportunities for Businesses"
 **File:** `/public/images/blog/ai-in-digital-transformation.jpg`
 
 > Abstract render: a network of glowing nodes and connecting lines in brand
@@ -196,7 +347,7 @@ the image (the site overlays its own title text elsewhere).
 > background. Clean, minimal, 3D-rendered look with soft shadows — no
 > literal robots or humanoid AI imagery.
 
-### 3b. "UX Research That Actually Ships: A Practical Framework"
+### 4b. "UX Research That Actually Ships: A Practical Framework"
 **File:** `/public/images/blog/ux-research-that-ships.jpg`
 
 > Abstract render: an overhead flat-lay of a UX research kit — sticky notes
@@ -204,7 +355,7 @@ the image (the site overlays its own title text elsewhere).
 > pen, and a blurred wireframe sketch on paper — shot from directly above
 > on a light neutral surface. Editorial, tidy, warm natural light.
 
-### 3c. "AI Agents Explained: The Next Evolution of Automation"
+### 4c. "AI Agents Explained: The Next Evolution of Automation"
 **File:** `/public/images/blog/ai-agents-explained.jpg`
 
 > Abstract render: a single glowing orb/node at the center with several
@@ -213,7 +364,7 @@ the image (the site overlays its own title text elsewhere).
 > in brand blue and magenta gradients on a dark ink-navy (#142A4B)
 > background with soft glow. Clean, minimal, no literal robot imagery.
 
-### 3d. "Why Every Product Team Needs a Performance Budget"
+### 4d. "Why Every Product Team Needs a Performance Budget"
 **File:** `/public/images/blog/performance-budgets.jpg`
 
 > Abstract render: a minimalist speedometer/gauge illustration with the
@@ -221,7 +372,7 @@ the image (the site overlays its own title text elsewhere).
 > geometric style using brand blue as the primary color, on a clean
 > off-white background. Convey: measured, disciplined, technical.
 
-### 3e. "Modernizing Data Stacks Without Breaking the Business"
+### 4e. "Modernizing Data Stacks Without Breaking the Business"
 **File:** `/public/images/blog/modernizing-data-stacks.jpg`
 
 > Abstract render: stacked, layered geometric blocks/panels (suggesting a
@@ -231,28 +382,28 @@ the image (the site overlays its own title text elsewhere).
 
 ---
 
-## 4. Optional — product mockups (3 images, nice-to-have)
+## 5. Optional — product mockups (3 images, nice-to-have)
 
 The `/products` page currently uses icon tiles only and doesn't strictly
 need imagery, but a real product screenshot mockup per product would lift
-that page to match the rest of the site. Lower priority than sections 1–3.
+that page to match the rest of the site. Lower priority than sections 1–4.
 
 **Generate at:** 1920 × 1200 px, JPG
 **Style:** same realistic device-mockup treatment as the case study covers.
 
-### 4a. CoreFlow
+### 5a. CoreFlow
 **File:** `/public/images/products/core-flow.jpg`
 > A laptop showing a workflow-automation dashboard UI: a horizontal pipeline
 > of connected task cards with checkmarks, in brand blue and violet, on a
 > clean desk with soft studio lighting.
 
-### 4b. CoreInsights
+### 5b. CoreInsights
 **File:** `/public/images/products/core-insights.jpg`
 > A laptop showing a web analytics dashboard UI: a heatmap overlay on a
 > webpage thumbnail plus a session-replay timeline scrubber below it, in
 > brand blue accents, clean desk setting.
 
-### 4c. CoreAgent
+### 5c. CoreAgent
 **File:** `/public/images/products/core-agent.jpg`
 > A laptop showing a chat-style support-agent interface UI: a conversation
 > thread with a brand-blue "agent" message bubble and a subtle "typing"
@@ -263,11 +414,13 @@ that page to match the rest of the site. Lower priority than sections 1–3.
 ## Once assets are generated
 
 1. Drop each file at the exact path listed above (create the folders if
-   they don't exist: `public/images/work/`, `public/images/about/team/`,
-   `public/images/home/`, `public/images/blog/`, `public/images/products/`).
-2. In the corresponding component, swap `<PlaceholderMedia .../>` for
-   Next's `<Image src="/images/..." alt="..." fill className="..." />` —
+   they don't exist: `public/videos/`, `public/images/work/`,
+   `public/images/about/team/`, `public/images/home/`,
+   `public/images/blog/`, `public/images/products/`).
+2. For images: in the corresponding component, swap `<PlaceholderMedia .../>`
+   for Next's `<Image src="/images/..." alt="..." fill className="..." />` —
    see [README.md](README.md#swapping-in-real-graphicsassets) for the
-   exact pattern already documented there.
-3. Write real `alt` text per image (a couple of words describing what's
-   shown, not the prompt itself) for accessibility and SEO.
+   exact pattern already documented there. Write real `alt` text per image
+   (a couple of words describing what's shown, not the prompt itself).
+3. For the hero video: swap `<HeroArt />` for a muted, looping `<video>`
+   element pointing at the two exported files and the poster image.

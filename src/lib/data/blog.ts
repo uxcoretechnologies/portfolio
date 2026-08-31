@@ -5,6 +5,7 @@ export type Post = {
   category: string;
   date: string;
   readTime: string;
+  image: string;
   content: string[];
 };
 
@@ -17,6 +18,7 @@ export const posts: Post[] = [
     category: "AI & Automation",
     date: "2026-07-14",
     readTime: "6 min read",
+    image: "/images/blog/ai-in-digital-transformation.jpg",
     content: [
       "Placeholder paragraph introducing the shift toward AI-assisted operations across mid-market and enterprise companies.",
       "Placeholder paragraph covering common adoption pitfalls: unclear ownership, unmeasured ROI, and tooling sprawl.",
@@ -31,6 +33,7 @@ export const posts: Post[] = [
     category: "Design",
     date: "2026-06-30",
     readTime: "5 min read",
+    image: "/images/blog/ux-research-that-ships.jpg",
     content: [
       "Placeholder paragraph on why research gets cut under deadline pressure, and what breaks when it does.",
       "Placeholder paragraph describing a compressed research loop: 3 interviews, 1 prototype, 1 test.",
@@ -45,6 +48,7 @@ export const posts: Post[] = [
     category: "AI & Automation",
     date: "2026-06-10",
     readTime: "7 min read",
+    image: "/images/blog/ai-agents-explained.jpg",
     content: [
       "Placeholder paragraph defining agentic systems versus rule-based automation.",
       "Placeholder paragraph on tool use, memory, and planning loops in modern agent architectures.",
@@ -59,6 +63,7 @@ export const posts: Post[] = [
     category: "Engineering",
     date: "2026-05-22",
     readTime: "4 min read",
+    image: "/images/blog/performance-budgets.jpg",
     content: [
       "Placeholder paragraph on the business cost of slow interfaces.",
       "Placeholder paragraph introducing Core Web Vitals as a shared team metric.",
@@ -73,6 +78,7 @@ export const posts: Post[] = [
     category: "Data",
     date: "2026-05-02",
     readTime: "6 min read",
+    image: "/images/blog/modernizing-data-stacks.jpg",
     content: [
       "Placeholder paragraph on the risk of big-bang data migrations.",
       "Placeholder paragraph describing a parallel-run migration strategy.",

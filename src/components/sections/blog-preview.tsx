@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -32,16 +33,27 @@ export function BlogPreview() {
             <RevealItem key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
               >
-                <span className="w-fit rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-primary">
-                  {post.category}
-                </span>
-                <h3 className="mt-5 font-display text-lg font-semibold leading-snug">{post.title}</h3>
-                <p className="mt-2 line-clamp-2 text-sm text-muted">{post.excerpt}</p>
-                <div className="mt-6 flex items-center justify-between text-xs text-muted-2">
-                  <span>{post.readTime}</span>
-                  <ArrowUpRight className="size-4 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-2">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <span className="w-fit rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-primary">
+                    {post.category}
+                  </span>
+                  <h3 className="mt-4 font-display text-lg font-semibold leading-snug">{post.title}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-muted">{post.excerpt}</p>
+                  <div className="mt-auto pt-6 flex items-center justify-between text-xs text-muted-2">
+                    <span>{post.readTime}</span>
+                    <ArrowUpRight className="size-4 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                  </div>
                 </div>
               </Link>
             </RevealItem>
