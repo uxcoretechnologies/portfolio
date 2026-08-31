@@ -5,6 +5,7 @@ const sources = {
   color: { src: "/logo/logo-color.svg", ratio: 1113 / 193 },
   light: { src: "/logo/logo-light.svg", ratio: 1102 / 182 },
   dark: { src: "/logo/logo-dark.svg", ratio: 1102 / 182 },
+  icon: { src: "/logo/icon-color.svg", ratio: 340 / 182 },
 } as const;
 
 export function Logo({

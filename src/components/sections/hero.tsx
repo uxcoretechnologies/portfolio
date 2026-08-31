@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { HeroArt } from "@/components/sections/hero-art";
+import { HeroProductDemo } from "@/components/sections/hero-product-demo";
 
 export function Hero() {
   return (
@@ -15,7 +15,7 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <Container className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+      <Container className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -67,7 +67,7 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
-          <HeroArt />
+          <HeroProductDemo />
         </motion.div>
       </Container>
     </section>
