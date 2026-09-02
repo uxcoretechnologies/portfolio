@@ -33,53 +33,60 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm transition-shadow duration-200",
-        scrolled && "shadow-[0_1px_0_0_rgba(15,17,23,0.04),0_8px_24px_-16px_rgba(15,17,23,0.12)]"
-      )}
-    >
-      <Container>
-        <nav className="flex h-16 items-center justify-between" aria-label="Primary">
-          <Link href="/" aria-label="UX Core Technologies home" className="flex items-center">
-            <Logo variant="color" className="h-6 w-auto sm:h-[34px]" />
-          </Link>
+    <>
+      <header
+        className={cn(
+          "sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm transition-shadow duration-200",
+          scrolled && "shadow-[0_1px_0_0_rgba(15,17,23,0.04),0_8px_24px_-16px_rgba(15,17,23,0.12)]"
+        )}
+      >
+        <Container>
+          <nav className="flex h-16 items-center justify-between" aria-label="Primary">
+            <Link href="/" aria-label="UX Core Technologies home" className="flex items-center">
+              <Logo variant="color" className="h-6 w-auto sm:h-[34px]" />
+            </Link>
 
-          <div className="hidden items-center gap-1 lg:flex">
-            <ServicesMenu active={pathname.startsWith("/services")} />
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={pathname === link.href ? "page" : undefined}
-                className={cn(
-                  "inline-flex h-10 items-center rounded-full px-4 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-foreground",
-                  pathname === link.href && "bg-surface text-foreground"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+            <div className="hidden items-center gap-1 lg:flex">
+              <ServicesMenu active={pathname.startsWith("/services")} />
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={pathname === link.href ? "page" : undefined}
+                  className={cn(
+                    "inline-flex h-10 items-center rounded-full px-4 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-foreground",
+                    pathname === link.href && "bg-surface text-foreground"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <span className="h-6 w-px border-l border-dashed border-border-strong" aria-hidden="true" />
-            <Button href="/contact" size="sm">
-              Start a Project <ArrowUpRight className="size-4" />
-            </Button>
-          </div>
+            <div className="hidden items-center gap-4 lg:flex">
+              <span className="h-6 w-px border-l border-dashed border-border-strong" aria-hidden="true" />
+              <Button href="/contact" size="sm">
+                Start a Project <ArrowUpRight className="size-4" />
+              </Button>
+            </div>
 
-          <button
-            aria-label="Open menu"
-            onClick={() => setOpen(true)}
-            className="flex size-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-surface lg:hidden"
-          >
-            <Menu className="size-5" />
-          </button>
-        </nav>
-      </Container>
+            <button
+              aria-label="Open menu"
+              onClick={() => setOpen(true)}
+              className="flex size-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-surface lg:hidden"
+            >
+              <Menu className="size-5" />
+            </button>
+          </nav>
+        </Container>
+      </header>
 
+      {/* Rendered as a sibling, not a child, of <header> — <header> has
+          backdrop-blur-sm, and CSS backdrop-filter creates a new containing
+          block for position:fixed descendants. Nested inside header, this
+          drawer's `fixed inset-y-0` was resolving against the header's own
+          64px box instead of the viewport, squashing it to a 64px sliver. */}
       <MobileDrawer open={open} onClose={() => setOpen(false)} />
-    </header>
+    </>
   );
 }

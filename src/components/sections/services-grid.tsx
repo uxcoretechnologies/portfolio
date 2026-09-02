@@ -22,8 +22,7 @@ export function ServicesGrid() {
           {services.map((service) => (
             <RevealItem key={service.slug}>
               <Link
-                href={`/services#${service.slug}`}
-                id={service.slug}
+                href={`/services/${service.slug}`}
                 className="group flex h-full flex-col justify-between rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-surface-2"
               >
                 <div>

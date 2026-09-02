@@ -102,7 +102,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
                             .map((service) => (
                               <li key={service.slug}>
                                 <Link
-                                  href={`/services#${service.slug}`}
+                                  href={`/services/${service.slug}`}
                                   onClick={onClose}
                                   className="flex items-center gap-2.5 text-sm text-foreground/90"
                                 >

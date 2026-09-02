@@ -56,7 +56,7 @@ export function Footer() {
             {services.slice(0, 6).map((s) => (
               <li key={s.slug}>
                 <Link
-                  href={`/services#${s.slug}`}
+                  href={`/services/${s.slug}`}
                   className="text-sm text-muted transition-colors hover:text-foreground"
                 >
                   {s.title}
@@ -71,9 +71,15 @@ export function Footer() {
         <p className="text-xs text-muted-2">
           © {year} {site.name}. All rights reserved.
         </p>
-        <p className="text-xs text-muted-2">
-          {site.email} · {site.phone}
-        </p>
+        <div className="flex items-center gap-5">
+          <Link href="/privacy" className="text-xs text-muted-2 transition-colors hover:text-foreground">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="text-xs text-muted-2 transition-colors hover:text-foreground">
+            Terms of Service
+          </Link>
+          <p className="text-xs text-muted-2">{site.email}</p>
+        </div>
       </Container>
     </footer>
   );

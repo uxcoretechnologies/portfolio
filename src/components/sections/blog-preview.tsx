@@ -51,7 +51,9 @@ export function BlogPreview() {
                   <h3 className="mt-4 font-display text-lg font-semibold leading-snug">{post.title}</h3>
                   <p className="mt-2 line-clamp-2 text-sm text-muted">{post.excerpt}</p>
                   <div className="mt-auto pt-6 flex items-center justify-between text-xs text-muted-2">
-                    <span>{post.readTime}</span>
+                    <span>
+                      {post.author.name} · {post.readTime}
+                    </span>
                     <ArrowUpRight className="size-4 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
                   </div>
                 </div>

@@ -34,10 +34,7 @@ export default function ServicesPage() {
         <Container className="flex flex-col gap-6">
           {services.map((service, i) => (
             <Reveal key={service.slug} delay={i * 0.04}>
-              <div
-                id={service.slug}
-                className="scroll-mt-24 grid grid-cols-1 gap-8 rounded-3xl border border-border bg-surface p-8 sm:p-10 lg:grid-cols-[auto_1fr_auto] lg:items-start"
-              >
+              <div className="grid grid-cols-1 gap-8 rounded-3xl border border-border bg-surface p-8 sm:p-10 lg:grid-cols-[auto_1fr_auto] lg:items-start">
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 text-primary">
                   <Icon name={service.icon} className="size-6" />
                 </div>
@@ -56,8 +53,8 @@ export default function ServicesPage() {
                 </div>
 
                 <div className="lg:pt-2">
-                  <Button href="/contact" variant="secondary" size="sm">
-                    Discuss this <ArrowUpRight className="size-3.5" />
+                  <Button href={`/services/${service.slug}`} variant="secondary" size="sm">
+                    Learn more <ArrowUpRight className="size-3.5" />
                   </Button>
                 </div>
               </div>

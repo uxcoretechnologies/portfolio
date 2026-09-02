@@ -75,7 +75,12 @@ export function ServicesMenu({ active }: { active?: boolean }) {
   const activeMeta = panels.find((p) => p.id === activePanel)!;
 
   return (
-    <div ref={wrapperRef} className="relative">
+    // Keyed by pathname: on navigation, React fully unmounts and remounts
+    // this component instead of relying on AnimatePresence's exit animation
+    // to finish — that exit gets interrupted by the route change, which
+    // otherwise leaves an invisible-but-still-`pointer-events: auto` panel
+    // node behind (opacity settles to 0, but the DOM node itself lingers).
+    <div key={pathname} ref={wrapperRef} className="relative">
       <div {...hoverProps} className="inline-flex">
         <button
           type="button"
@@ -146,8 +151,9 @@ export function ServicesMenu({ active }: { active?: boolean }) {
                             .map((service) => (
                               <li key={service.slug}>
                                 <Link
-                                  href={`/services#${service.slug}`}
+                                  href={`/services/${service.slug}`}
                                   role="menuitem"
+                                  onClick={() => setOpen(false)}
                                   className="group -mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-surface hover:text-foreground"
                                 >
                                   <Icon
@@ -173,6 +179,7 @@ export function ServicesMenu({ active }: { active?: boolean }) {
                           <Link
                             href={`/products#${product.slug}`}
                             role="menuitem"
+                            onClick={() => setOpen(false)}
                             className="group -mx-2 flex items-start gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-surface hover:text-foreground"
                           >
                             <Icon
@@ -204,7 +211,7 @@ export function ServicesMenu({ active }: { active?: boolean }) {
                         ? "Tell us about your project — we’ll point you to the right service, free of charge."
                         : "Tell us what you’re building — we’ll show you how our tools could fit in."}
                     </p>
-                    <Button href="/contact" size="sm" className="mt-4 w-full">
+                    <Button href="/contact" size="sm" onClick={() => setOpen(false)} className="mt-4 w-full">
                       Talk to us <ArrowUpRight className="size-3.5" />
                     </Button>
                   </div>
@@ -213,6 +220,7 @@ export function ServicesMenu({ active }: { active?: boolean }) {
 
               <Link
                 href={activeMeta.href}
+                onClick={() => setOpen(false)}
                 className="flex items-center justify-between border-t border-border py-4 text-sm font-medium text-foreground transition-colors hover:text-primary"
               >
                 {activeMeta.viewAllLabel}
