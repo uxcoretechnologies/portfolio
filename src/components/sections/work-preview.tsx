@@ -37,6 +37,8 @@ export function WorkPreview() {
                   ratio="aspect-[16/11]"
                   gradient={project.color}
                   className="transition-transform duration-500 group-hover:scale-[1.01]"
+                  src={project.coverImage?.src}
+                  alt={project.coverImage?.alt}
                 />
                 <div className="mt-4 flex items-start justify-between gap-4">
                   <div>
