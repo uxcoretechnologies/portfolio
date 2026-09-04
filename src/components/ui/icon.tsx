@@ -12,6 +12,12 @@ import {
   MapPin,
   Server,
   ShieldCheck,
+  Laptop,
+  HeartPulse,
+  GraduationCap,
+  CalendarClock,
+  Users2,
+  Trophy,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,6 +35,12 @@ const map: Record<string, LucideIcon> = {
   MapPin,
   Server,
   ShieldCheck,
+  Laptop,
+  HeartPulse,
+  GraduationCap,
+  CalendarClock,
+  Users2,
+  Trophy,
 };
 
 export function Icon({ name, className }: { name: string; className?: string }) {

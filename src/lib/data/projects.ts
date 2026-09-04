@@ -33,6 +33,27 @@ export type Project = {
   heroImage?: ProjectImage;
   showcaseImage?: ProjectImage;
   requirementsImage?: ProjectImage;
+
+  // A real product's own logo, shown in place of the plain-text name label
+  // above the hero tagline — omit to keep the current text label.
+  brandLogo?: ProjectImage;
+  // Which side the hero image sits on. Defaults to "right" (current
+  // behavior) when omitted.
+  heroImagePosition?: "left" | "right";
+  // An optional splash band rendered above the standard hero — a full brand
+  // moment (logo, headline, CTA, image) for case studies with real product
+  // marketing assets to show off. Omit to skip straight to the standard hero.
+  bigHero?: {
+    headline: string;
+    ctaLabel: string;
+    ctaHref: string;
+    image: ProjectImage;
+  };
+  // Per-project override for the dark screen-gallery band's background —
+  // omit to use the site's default dark tone. Lets a case study match its
+  // own source design (e.g. a specific brand navy) without re-theming the
+  // shared dark band used elsewhere on the site.
+  galleryBg?: string;
 };
 
 export const projects: Project[] = [
@@ -68,8 +89,6 @@ export const projects: Project[] = [
       { name: "MongoDB", icon: "Database" },
       { name: "Role-Based Access", icon: "ShieldCheck" },
     ],
-    showcaseHeadline: "AFS DESK",
-    showcaseTagline: "Manage. Grow. Succeed.",
     requirementsIntro:
       "The platform needed to support multiple organizations securely from day one — each with its own users, leads, and data — without the complexity or cost of running a separate deployment per client.",
     requirements: [
@@ -83,28 +102,95 @@ export const projects: Project[] = [
     approach:
       "The data model was designed multi-tenant from the first schema — organizations, users, leads, and activities all scoped to a company from day one — so the same codebase could serve one team or hundreds without a later rebuild. Delivery went module by module (dashboard, then leads, then follow-ups, then activity and notifications), letting the core workflow ship and get used early, with each later module building on real usage instead of assumptions.",
     gallery: [
-      { src: "/images/work/afs-desk/afs-desk-followups.jpg", alt: "AFS Desk follow-ups list grouped by status, with overdue items flagged" },
-      { src: "/images/work/afs-desk/afs-desk-settings.jpg", alt: "AFS Desk settings screen covering lead statuses, sources, and roles" },
-      { src: "/images/work/afs-desk/afs-desk-lead-status-setup.jpg", alt: "AFS Desk custom lead status editor with color and ordering" },
-      { src: "/images/work/afs-desk/afs-desk-message-template.jpg", alt: "AFS Desk message template editor with lead-data placeholders" },
-      { src: "/images/work/afs-desk/afs-desk-followup-detail.jpg", alt: "AFS Desk follow-up detail view for a scheduled call" },
+      { src: "/images/work/afs-desk/afs-screen-1.png", alt: "AFS Desk dashboard with lead stats, follow-ups, and pipeline chart" },
+      { src: "/images/work/afs-desk/afs-screen-2.png", alt: "AFS Desk user activity timeline with login and follow-up events" },
+      { src: "/images/work/afs-desk/afs-screen-3.png", alt: "AFS Desk leads list with quick-actions menu open" },
+      { src: "/images/work/afs-desk/afs-screen-4.jpeg", alt: "AFS Desk login screen" },
+      { src: "/images/work/afs-desk/afs-screen-5.png", alt: "AFS Desk profile and settings screen" },
     ],
     coverImage: {
-      src: "/images/work/afs-desk/afs-desk-dashboard.jpg",
-      alt: "AFS Desk dashboard — case study cover",
+      src: "/images/work/afs-desk/afs-desk-hero-mockup.png",
+      alt: "AFS Desk — three phone mockups showing dashboard, activity, and leads screens",
     },
     heroImage: {
-      src: "/images/work/afs-desk/afs-desk-dashboard.jpg",
-      alt: "AFS Desk dashboard showing lead stats and pipeline breakdown",
-    },
-    showcaseImage: {
-      src: "/images/work/afs-desk/afs-desk-login.jpg",
-      alt: "AFS Desk login screen",
+      src: "/images/work/afs-desk/afs-desk-showcase-right.png",
+      alt: "AFS Desk — phone mockups on a warm background showing dashboard, activity, and leads screens",
     },
     requirementsImage: {
-      src: "/images/work/afs-desk/afs-desk-leads-actions.jpg",
-      alt: "AFS Desk leads list with the quick-actions menu open",
+      src: "/images/work/afs-desk/afs-desk-showcase-left.png",
+      alt: "AFS Desk — four phones on a blue gradient background showing login, dashboard, activity, and leads",
     },
+    brandLogo: {
+      src: "/images/work/afs-desk/afs-logo-mark.svg",
+      alt: "AFS Desk logo",
+    },
+    heroImagePosition: "left",
+    galleryBg: "#0c2778",
+    bigHero: {
+      headline: "Your Business in Your Hands",
+      ctaLabel: "Get Started",
+      ctaHref: "/contact",
+      image: {
+        src: "/images/work/afs-desk/afs-desk-hero-mockup.png",
+        alt: "AFS Desk — four phone mockups showing the splash screen, dashboard, activity, and leads screens",
+      },
+    },
+  },
+  {
+    slug: "learnup",
+    name: "LearnUp",
+    industry: "EdTech — Technical & Vocational Training",
+    type: "Mobile & Web Application",
+    summary:
+      "A connected learning platform for a vocational training institute — course delivery, exams, certification, and fee collection in one mobile-first system, backed by a live operations dashboard for staff.",
+    challenge:
+      "A vocational training institute was running its entire student lifecycle — enrollment, coursework, certification exams, and fee collection — across spreadsheets and messaging apps. There was no shared system to track a student's progress, no way to verify a certificate was genuine, and no live view for staff of enrollments, payments, or exam results.",
+    solution:
+      "LearnUp centralizes an entire vocational institute's student lifecycle behind one mobile-first app. Students enroll in hands-on technical courses, work through structured video-and-text lessons, sit timed certification exams, and pay course fees in installments — while every enrollment, payment, and exam result lands instantly in a live operations dashboard the institute's staff run day to day.",
+    results: [
+      { label: "Content languages", value: "3" },
+      { label: "Certification", value: "QR-verified" },
+      { label: "Staff roles", value: "4-tier" },
+    ],
+    tags: ["EdTech", "Vocational Training", "Mobile Learning"],
+    color: "from-amber-500/25 to-indigo-400/15",
+    tagline: "Every Student's Progress, in Real Time",
+    client: "Confidential",
+    servicesProvided: [
+      "Mobile App Development",
+      "Admin Dashboard Development",
+      "Backend API Development",
+      "Database Design",
+      "Product & UX/UI Design",
+    ],
+    techStack: [
+      { name: "React Native", icon: "Smartphone" },
+      { name: "Real-time Backend", icon: "Radio" },
+      { name: "Cloud Object Storage", icon: "Database" },
+      { name: "Role-Based Access", icon: "ShieldCheck" },
+    ],
+    requirementsIntro:
+      "The institute needed to move an entire student lifecycle — enrollment, hands-on technical coursework, certification exams, and fee collection — off spreadsheets and messaging apps into one connected system, without losing the practical, hands-on character of vocational trade training.",
+    requirements: [
+      "A mobile-first learning experience built for students already living on their phones, not a desktop-only LMS",
+      "Multi-language content (English, Hindi, Marathi) for a genuinely multilingual student base",
+      "Structured curriculum delivery — modules, lessons, and mixed text/video/quiz content — with progressive unlocking",
+      "A real exam engine: timed sessions, shuffled question banks, configurable pass thresholds and retake limits",
+      "Verifiable digital certificates an employer could actually check, not just a downloadable PDF",
+      "Built-in fee collection with real payment processing and configurable installment plans",
+      "One operations dashboard for staff to manage students, courses, fees, exams, and support",
+    ],
+    approach:
+      "The backend was designed real-time-first from the initial schema — students, courses, enrollments, and payments all connected through one live system, so a change an admin makes reaches a student's phone without a manual refresh. Delivery went module by module: course and curriculum management first, then the exam and certification engine, then fee collection and payments, then an AI-assisted mentor and a gamified progress layer — each shipped and used before the next was built on top of it.",
+    // Real product screenshots pending — these render as labeled gradient
+    // placeholders (via PlaceholderMedia) until final assets land.
+    gallery: [
+      "Student dashboard with course progress",
+      "Timed exam session with shuffled questions",
+      "QR-verified digital certificate",
+      "Admin operations dashboard with live activity feed",
+      "Installment-based fee payment & receipts",
+    ],
   },
   {
     slug: "retailos",

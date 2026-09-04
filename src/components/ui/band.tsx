@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -10,14 +11,16 @@ import { cn } from "@/lib/utils";
 export function Band({
   tone = "light",
   className,
+  style,
   children,
 }: {
   tone?: "light" | "dark";
   className?: string;
+  style?: CSSProperties;
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn(tone === "dark" && "tone-dark", "bg-background text-foreground", className)}>
+    <div className={cn(tone === "dark" && "tone-dark", "bg-background text-foreground", className)} style={style}>
       {children}
     </div>
   );

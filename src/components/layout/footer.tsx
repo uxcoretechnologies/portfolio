@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
 import { LinkedinIcon, GithubIcon, DribbbleIcon, XIcon } from "@/components/ui/social-icons";
@@ -16,6 +17,32 @@ export function Footer() {
             <Logo variant="light" height={26} />
           </Link>
           <p className="mt-4 max-w-sm text-sm text-muted">{site.description}</p>
+
+          <ul className="mt-6 flex flex-col gap-2.5">
+            <li>
+              <a
+                href={`mailto:${site.email}`}
+                className="inline-flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-foreground"
+              >
+                <Mail className="size-4 shrink-0 text-muted-2" />
+                {site.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`tel:+${site.callNumber}`}
+                className="inline-flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-foreground"
+              >
+                <Phone className="size-4 shrink-0 text-muted-2" />
+                {site.phone}
+              </a>
+            </li>
+            <li className="inline-flex items-center gap-2.5 text-sm text-muted">
+              <MapPin className="size-4 shrink-0 text-muted-2" />
+              {site.address}
+            </li>
+          </ul>
+
           <div className="mt-6 flex items-center gap-3">
             {[
               { icon: LinkedinIcon, href: site.social.linkedin, label: "LinkedIn" },
@@ -78,7 +105,6 @@ export function Footer() {
           <Link href="/terms" className="text-xs text-muted-2 transition-colors hover:text-foreground">
             Terms of Service
           </Link>
-          <p className="text-xs text-muted-2">{site.email}</p>
         </div>
       </Container>
     </footer>

@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { contactSchema } from "@/lib/schemas/contact";
+import { applySchema } from "@/lib/schemas/apply";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
-  const parsed = contactSchema.safeParse(body);
+  const parsed = applySchema.safeParse(body);
 
   if (!parsed.success) {
     return NextResponse.json(
@@ -12,10 +12,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const webhookUrl = process.env.CONTACT_GAS_WEBHOOK_URL;
+  const webhookUrl = process.env.CAREERS_GAS_WEBHOOK_URL;
 
   if (!webhookUrl || webhookUrl.includes("REPLACE_WITH")) {
-    console.warn("[contact] CONTACT_GAS_WEBHOOK_URL is not configured — skipping webhook.");
+    console.warn("[careers] CAREERS_GAS_WEBHOOK_URL is not configured — skipping webhook.");
     return NextResponse.json({ ok: true });
   }
 
@@ -28,17 +28,17 @@ export async function POST(request: Request) {
     });
 
     if (!gasRes.ok) {
-      console.error("[contact] GAS webhook returned:", gasRes.status, await gasRes.text());
+      console.error("[careers] GAS webhook returned:", gasRes.status, await gasRes.text());
       return NextResponse.json({ ok: false, error: "Webhook error" }, { status: 502 });
     }
 
     const data = await gasRes.json().catch(() => null);
     if (data && data.success === false) {
-      console.error("[contact] GAS script error:", data.error);
+      console.error("[careers] GAS script error:", data.error);
       return NextResponse.json({ ok: false, error: data.error }, { status: 500 });
     }
   } catch (err) {
-    console.error("[contact] Failed to reach GAS webhook:", err);
+    console.error("[careers] Failed to reach GAS webhook:", err);
     return NextResponse.json({ ok: false, error: "Webhook unreachable" }, { status: 502 });
   }
 

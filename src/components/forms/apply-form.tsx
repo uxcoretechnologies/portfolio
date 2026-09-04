@@ -1,32 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, CheckCircle2 } from "lucide-react";
-import { contactSchema, serviceOptions, type ContactFormValues } from "@/lib/schemas/contact";
+import { applySchema, roleOptions, generalApplicationOption, type ApplyFormValues } from "@/lib/schemas/apply";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const inputClass =
   "w-full rounded-xl border border-control-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-2 outline-none transition-colors focus:border-primary focus:ring-4 focus:ring-primary/15";
 
-export function ContactForm() {
+export function ApplyForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const searchParams = useSearchParams();
+  const roleFromQuery = searchParams.get("role");
+  const defaultRole = roleOptions.includes(roleFromQuery ?? "") ? roleFromQuery! : "";
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactSchema),
+  } = useForm<ApplyFormValues>({
+    resolver: zodResolver(applySchema),
+    defaultValues: { role: defaultRole },
   });
 
-  const onSubmit = async (values: ContactFormValues) => {
+  const onSubmit = async (values: ApplyFormValues) => {
     setStatus("submitting");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/careers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -43,15 +48,15 @@ export function ContactForm() {
     return (
       <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface p-10 text-center">
         <CheckCircle2 className="size-10 text-primary" />
-        <h3 className="font-display text-xl font-semibold">Message sent</h3>
+        <h3 className="font-display text-xl font-semibold">Application received</h3>
         <p className="text-sm text-muted">
-          Thanks for reaching out! We&rsquo;ve received your message and our team will get back to you within 24 hours.
+          Thanks for applying — we review every application and will reach out if it's a fit.
         </p>
         <button
           onClick={() => setStatus("idle")}
           className="mt-2 text-sm font-medium text-primary hover:underline"
         >
-          Send another message
+          Submit another application
         </button>
       </div>
     );
@@ -78,46 +83,79 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="company" className="mb-2 block text-sm font-medium">
-            Company Name *
+          <label htmlFor="phone" className="mb-2 block text-sm font-medium">
+            Phone *
           </label>
-          <input id="company" className={inputClass} {...register("company")} />
-          {errors.company && <p className="mt-1.5 text-xs text-rose-600">{errors.company.message}</p>}
+          <input id="phone" type="tel" className={inputClass} {...register("phone")} />
+          {errors.phone && <p className="mt-1.5 text-xs text-rose-600">{errors.phone.message}</p>}
         </div>
         <div>
-          <label htmlFor="service" className="mb-2 block text-sm font-medium">
-            Select Service *
+          <label htmlFor="role" className="mb-2 block text-sm font-medium">
+            Position *
           </label>
-          <select id="service" className={cn(inputClass, "appearance-none")} defaultValue="" {...register("service")}>
+          <select
+            id="role"
+            className={cn(inputClass, "appearance-none")}
+            defaultValue={defaultRole}
+            {...register("role")}
+          >
             <option value="" disabled>
-              Service
+              Select a role
             </option>
-            {serviceOptions.map((option) => (
+            {roleOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
             ))}
           </select>
-          {errors.service && <p className="mt-1.5 text-xs text-rose-600">{errors.service.message}</p>}
+          {errors.role && <p className="mt-1.5 text-xs text-rose-600">{errors.role.message}</p>}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="resumeUrl" className="mb-2 block text-sm font-medium">
+            Resume link *
+          </label>
+          <input
+            id="resumeUrl"
+            type="url"
+            placeholder="Google Drive, Dropbox, or personal site"
+            className={inputClass}
+            {...register("resumeUrl")}
+          />
+          {errors.resumeUrl && <p className="mt-1.5 text-xs text-rose-600">{errors.resumeUrl.message}</p>}
+        </div>
+        <div>
+          <label htmlFor="portfolioUrl" className="mb-2 block text-sm font-medium">
+            Portfolio / LinkedIn
+          </label>
+          <input id="portfolioUrl" type="url" className={inputClass} {...register("portfolioUrl")} />
+          {errors.portfolioUrl && <p className="mt-1.5 text-xs text-rose-600">{errors.portfolioUrl.message}</p>}
         </div>
       </div>
 
       <div>
         <label htmlFor="message" className="mb-2 block text-sm font-medium">
-          Message *
+          Anything else you&rsquo;d like us to know?
         </label>
-        <textarea id="message" rows={5} className={inputClass} {...register("message")} />
+        <textarea id="message" rows={4} className={inputClass} {...register("message")} />
         {errors.message && <p className="mt-1.5 text-xs text-rose-600">{errors.message.message}</p>}
       </div>
 
       <Button type="submit" size="lg" disabled={status === "submitting"} className="w-full sm:w-fit">
         {status === "submitting" && <Loader2 className="size-4 animate-spin" />}
-        Send Message
+        Submit Application
       </Button>
 
       {status === "error" && (
         <p className="text-sm text-rose-600">Something went wrong — please try again.</p>
       )}
+
+      <p className="text-xs text-muted-2">
+        Don&rsquo;t see the right role? Select &ldquo;{generalApplicationOption}&rdquo; and tell us where you&rsquo;d
+        fit in.
+      </p>
     </form>
   );
 }

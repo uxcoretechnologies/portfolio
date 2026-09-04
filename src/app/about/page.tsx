@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { PlaceholderMedia } from "@/components/ui/placeholder-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { Band } from "@/components/ui/band";
 import { Stats } from "@/components/sections/stats";
@@ -33,13 +33,6 @@ const values = [
   },
 ];
 
-const team = [
-  { name: "Placeholder Name", role: "Founder & CEO" },
-  { name: "Placeholder Name", role: "Head of Design" },
-  { name: "Placeholder Name", role: "Head of Engineering" },
-  { name: "Placeholder Name", role: "AI & Data Lead" },
-];
-
 export default function AboutPage() {
   return (
     <>
@@ -56,9 +49,18 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        <Container>
+        <Container className="pb-24 sm:pb-32">
           <Reveal>
-            <PlaceholderMedia label="Team / office photography placeholder" ratio="aspect-[21/9]" />
+            <div className="relative overflow-hidden rounded-2xl border border-border shadow-xl">
+              <Image
+                src="/images/about/enabling-teams.png"
+                alt="Enabling teams at UX Core Technologies"
+                width={1920}
+                height={820}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
           </Reveal>
         </Container>
       </Band>
@@ -83,25 +85,6 @@ export default function AboutPage() {
 
       <Band tone="light">
         <Stats />
-      </Band>
-
-      <Band tone="dark">
-        <section className="py-24 sm:py-32">
-          <Container>
-            <Reveal>
-              <SectionHeading eyebrow="Leadership" title="Meet the team (placeholder)" align="center" />
-            </Reveal>
-            <RevealGroup className="mt-14 grid grid-cols-2 gap-8 lg:grid-cols-4">
-              {team.map((member) => (
-                <RevealItem key={member.role} className="text-center">
-                  <PlaceholderMedia label="Headshot" ratio="aspect-square" className="mx-auto max-w-[180px]" />
-                  <p className="mt-4 font-semibold">{member.name}</p>
-                  <p className="text-sm text-muted">{member.role}</p>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </Container>
-        </section>
       </Band>
 
       <Band tone="light">

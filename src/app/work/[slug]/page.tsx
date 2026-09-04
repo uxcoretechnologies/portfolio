@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { PlaceholderMedia } from "@/components/ui/placeholder-media";
@@ -12,6 +14,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { ProjectGallery } from "@/components/sections/project-gallery";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { projects } from "@/lib/data/projects";
+import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -44,37 +47,129 @@ export default async function ProjectPage({
 
   return (
     <>
-      <Band tone="light">
+      <Band tone="light" className="overflow-hidden">
+        {/* Big brand hero — only for case studies with real product marketing
+            assets to show off (a logo, a headline, a hero CTA, a polished
+            phone-fan render). Skipped entirely when a project has no
+            `bigHero`, so every other case study is unaffected. */}
+        {project.bigHero && (
+          <section
+            className="relative overflow-hidden pt-10 pb-16 sm:pt-14 sm:pb-24"
+            style={{ background: "var(--gradient-hero)" }}
+          >
+            {/* Soft blurred glow blobs, standing in for the source design's
+                wave/particle background art until a matching asset lands */}
+            <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+              <div className="absolute -left-24 -top-32 size-[420px] rounded-full bg-primary/20 blur-[90px]" />
+              <div className="absolute -right-16 top-1/3 size-[360px] rounded-full bg-accent-warm/15 blur-[100px]" />
+              <div className="absolute bottom-[-140px] left-1/4 size-[480px] rounded-full bg-primary/10 blur-[110px]" />
+            </div>
+
+            <Container className="relative">
+              <Reveal>
+                <Link
+                  href="/work"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground"
+                >
+                  <ArrowLeft className="size-3.5" /> Back to work
+                </Link>
+              </Reveal>
+
+              <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[40%_60%] lg:gap-16">
+                <Reveal>
+                  {project.brandLogo && (
+                    <Image
+                      src={project.brandLogo.src}
+                      alt={project.brandLogo.alt}
+                      width={143}
+                      height={127}
+                      className="h-auto w-24 sm:w-28"
+                    />
+                  )}
+                  <h1 className="mt-6 text-balance font-display text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
+                    {project.bigHero.headline}
+                  </h1>
+                  <div className="mt-8">
+                    <Button
+                      href={project.bigHero.ctaHref}
+                      size="lg"
+                      className="bg-gradient-to-r from-[#0b46f6] to-[#03d4b4] pr-2.5 hover:opacity-90"
+                    >
+                      {project.bigHero.ctaLabel}
+                      <span className="flex size-7 items-center justify-center rounded-full bg-white text-[#0b46f6]">
+                        <ArrowUpRight className="size-3.5" />
+                      </span>
+                    </Button>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={0.1} className="min-w-0 overflow-hidden">
+                  <PlaceholderMedia
+                    label={`${project.name} — brand showcase`}
+                    ratio="aspect-[16/10]"
+                    gradient={project.color}
+                    src={project.bigHero.image.src}
+                    alt={project.bigHero.image.alt}
+                  />
+                </Reveal>
+              </div>
+            </Container>
+          </section>
+        )}
+
         {/* Hero — small project-name label, tagline as the big headline (matches the reference pattern) */}
         <section className="pt-20 pb-16 sm:pt-28">
           <Container>
-            <Reveal>
-              <Link
-                href="/work"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground"
-              >
-                <ArrowLeft className="size-3.5" /> Back to work
-              </Link>
-            </Reveal>
-
-            <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:grid-cols-[42%_58%] lg:gap-16">
+            {!project.bigHero && (
               <Reveal>
-                <p className="text-sm font-medium text-primary">{project.name}</p>
-                <h1 className="mt-3 text-balance font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]">
+                <Link
+                  href="/work"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground"
+                >
+                  <ArrowLeft className="size-3.5" /> Back to work
+                </Link>
+              </Reveal>
+            )}
+
+            <div
+              className={cn(
+                "grid grid-cols-1 items-center gap-10 lg:grid-cols-[42%_58%] lg:gap-16",
+                !project.bigHero && "mt-8",
+                project.heroImagePosition === "left" && "lg:grid-cols-[58%_42%]"
+              )}
+            >
+              <Reveal className={cn(project.heroImagePosition === "left" && "lg:order-2")}>
+                {project.brandLogo ? (
+                  <Image
+                    src={project.brandLogo.src}
+                    alt={project.brandLogo.alt}
+                    width={143}
+                    height={127}
+                    className="h-auto w-16"
+                  />
+                ) : (
+                  <p className="text-sm font-medium text-primary">{project.name}</p>
+                )}
+                <h1 className="mt-3 text-balance font-display text-3xl font-extrabold leading-[1.2] tracking-tight sm:text-4xl lg:text-[2.75rem]">
                   {project.tagline ?? project.name}
                 </h1>
                 <p className="mt-4 max-w-xl text-muted">{project.summary}</p>
-                <div className="mt-8">
-                  <Button href="/contact">
-                    Let&rsquo;s connect <ArrowUpRight className="size-4" />
-                  </Button>
-                </div>
+                {!project.bigHero && (
+                  <div className="mt-8">
+                    <Button href="/contact">
+                      Let&rsquo;s connect <ArrowUpRight className="size-4" />
+                    </Button>
+                  </div>
+                )}
               </Reveal>
 
-              <Reveal delay={0.1}>
+              <Reveal
+                delay={0.1}
+                className={cn("min-w-0 overflow-hidden", project.heroImagePosition === "left" && "lg:order-1")}
+              >
                 <PlaceholderMedia
                   label={`${project.name} — hero mockup`}
-                  ratio="aspect-square"
+                  ratio="aspect-[4/3]"
                   gradient={project.color}
                   src={project.heroImage?.src}
                   alt={project.heroImage?.alt}
@@ -253,7 +348,14 @@ export default async function ProjectPage({
 
       {/* Screen gallery — draggable, depth-scaled carousel on a dark band */}
       {project.gallery && (
-        <Band tone="dark">
+        <Band
+          tone="dark"
+          style={
+            project.galleryBg
+              ? ({ "--background": project.galleryBg, "--surface": project.galleryBg } as CSSProperties)
+              : undefined
+          }
+        >
           <section className="py-24 sm:py-32">
             <ProjectGallery images={project.gallery} color={project.color} />
           </section>
