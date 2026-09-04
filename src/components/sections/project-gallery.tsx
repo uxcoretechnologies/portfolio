@@ -12,7 +12,9 @@ import { cn } from "@/lib/utils";
  * case-study galleries seen on polished agency sites, rebuilt with our own
  * components and embla (already a project dependency).
  */
-export function ProjectGallery({ images, color }: { images: string[]; color: string }) {
+export type GalleryImage = string | { src: string; alt: string };
+
+export function ProjectGallery({ images, color }: { images: GalleryImage[]; color: string }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
   const [selected, setSelected] = useState(0);
 
@@ -39,22 +41,32 @@ export function ProjectGallery({ images, color }: { images: string[]; color: str
 
       <div className="overflow-hidden py-6" ref={emblaRef}>
         <div className="flex cursor-grab active:cursor-grabbing">
-          {images.map((label, i) => {
+          {images.map((image, i) => {
             const distance = Math.min(
               Math.abs(i - selected),
               Math.abs(i - selected + images.length),
               Math.abs(i - selected - images.length)
             );
+            const isReal = typeof image !== "string";
             return (
               <div
-                key={label}
+                key={isReal ? image.src : image}
                 className="min-w-0 shrink-0 basis-[62%] px-3 transition-all duration-500 sm:basis-[38%] lg:basis-[26%]"
                 style={{
                   transform: `scale(${distance === 0 ? 1 : distance === 1 ? 0.88 : 0.78})`,
                   opacity: distance === 0 ? 1 : distance === 1 ? 0.6 : 0.35,
                 }}
               >
-                <PlaceholderMedia label={label} ratio="aspect-[5/8]" gradient={color} className="rounded-[20px]" />
+                {isReal ? (
+                  <PlaceholderMedia
+                    src={image.src}
+                    alt={image.alt}
+                    ratio="aspect-[5/8]"
+                    className="rounded-[20px]"
+                  />
+                ) : (
+                  <PlaceholderMedia label={image} ratio="aspect-[5/8]" gradient={color} className="rounded-[20px]" />
+                )}
               </div>
             );
           })}
@@ -70,9 +82,9 @@ export function ProjectGallery({ images, color }: { images: string[]; color: str
           <ChevronLeft className="size-4" />
         </button>
         <div className="flex items-center gap-2">
-          {images.map((label, i) => (
+          {images.map((image, i) => (
             <span
-              key={label}
+              key={typeof image === "string" ? image : image.src}
               className={cn(
                 "h-1.5 rounded-full transition-all",
                 i === selected ? "w-6 bg-primary" : "w-1.5 bg-border-strong"

@@ -76,6 +76,8 @@ export default async function ProjectPage({
                   label={`${project.name} — hero mockup`}
                   ratio="aspect-square"
                   gradient={project.color}
+                  src={project.heroImage?.src}
+                  alt={project.heroImage?.alt}
                 />
               </Reveal>
             </div>
@@ -190,6 +192,8 @@ export default async function ProjectPage({
               ratio="aspect-[4/7]"
               gradient={project.color}
               className="w-full max-w-[280px] shadow-2xl sm:max-w-xs"
+              src={project.showcaseImage?.src}
+              alt={project.showcaseImage?.alt}
             />
           </div>
         </section>
@@ -236,6 +240,8 @@ export default async function ProjectPage({
                       ratio="aspect-auto h-full"
                       gradient={project.color}
                       className="h-full rounded-3xl"
+                      src={project.requirementsImage?.src}
+                      alt={project.requirementsImage?.alt}
                     />
                   </div>
                 </div>
@@ -295,6 +301,8 @@ export default async function ProjectPage({
                     label={`${p.name} — case study cover`}
                     ratio="aspect-[16/11]"
                     gradient={p.color}
+                    src={p.coverImage?.src}
+                    alt={p.coverImage?.alt}
                   />
                   <div className="mt-4 flex items-center justify-between">
                     <h3 className="font-display text-lg font-semibold">{p.name}</h3>

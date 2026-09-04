@@ -125,14 +125,6 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
                 </div>
               </div>
 
-              <Link
-                href="/products"
-                onClick={onClose}
-                className="block border-b border-dashed border-border py-4 text-sm font-medium"
-              >
-                Products
-              </Link>
-
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

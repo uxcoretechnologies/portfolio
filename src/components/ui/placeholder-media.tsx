@@ -1,21 +1,41 @@
+import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
  * Stand-in for real graphics/photography until the design team delivers final assets.
- * Swap usages of this component for <Image /> once real files land in /public.
+ * Pass `src` (+ `alt`) once a real file lands in /public to render it instead of the
+ * placeholder gradient — every existing call site keeps working unchanged.
  */
 export function PlaceholderMedia({
   label,
   ratio = "aspect-[4/3]",
   className,
   gradient = "from-primary/20 via-surface-2 to-accent/10",
+  src,
+  alt,
 }: {
   label?: string;
   ratio?: string;
   className?: string;
   gradient?: string;
+  src?: string;
+  alt?: string;
 }) {
+  if (src) {
+    return (
+      <div className={cn("relative overflow-hidden rounded-2xl border border-border", ratio, className)}>
+        <Image
+          src={src}
+          alt={alt ?? label ?? ""}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover object-top"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(

@@ -10,6 +10,8 @@ import {
   Workflow,
   BarChart3,
   MapPin,
+  Server,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -25,6 +27,8 @@ const map: Record<string, LucideIcon> = {
   Workflow,
   BarChart3,
   MapPin,
+  Server,
+  ShieldCheck,
 };
 
 export function Icon({ name, className }: { name: string; className?: string }) {

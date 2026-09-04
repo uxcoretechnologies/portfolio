@@ -274,6 +274,161 @@ images above.
 > soft neutral tones with the screen's blue/violet UI as the main color
 > pop. Convey: coordination, momentum, teams in sync.
 
+### 2g. RetailOS — multi-location retail operations platform
+**Status:** concept case study — fictional client, real generated mockups.
+Client is credited as "Confidential" on the page; nothing here should imply
+a real, checkable company. Same 8-image set as VoltPath above (cover, hero,
+showcase, fanned requirements, 5 gallery). Lead accent: brand blue with
+magenta accents (retail energy, not the cooler blue/violet used elsewhere).
+
+**File:** `/public/images/work/retailos-cover.jpg` — **Generate at:** 2400 × 1650 px, JPG
+> A tablet mounted at a retail checkout counter, screen showing a modern POS
+> UI: a product grid, a running cart total, and a "Charge" button in brand
+> blue (#104DFC) with a magenta (#882BD8) accent on the active category tab.
+> Background: a bright, clean store interior, shelves softly out of focus,
+> warm daylight through a storefront window. The screen is the sharp focal
+> point. Convey: fast, modern, in-store retail technology.
+
+**File:** `/public/images/work/retailos-hero.jpg` — **Generate at:** 1600 × 1600 px, JPG
+> A tablet centered and upright, facing the camera straight-on, screen
+> showing RetailOS's multi-location dashboard: a row of small store cards
+> each with a stock-health indicator dot (green/amber/red), and one large
+> KPI number in brand blue. Clean, soft studio background in pale gray or
+> off-white (#F4F4F4) — calm enough to sit beside text. Even margin on all
+> sides so it crops well to a perfect square.
+
+**File:** `/public/images/work/retailos-showcase.jpg` — **Generate at:** 1200 × 2100 px, JPG (≈4:7)
+> A single tablet, dead-center, facing the camera straight-on, larger and
+> more dramatic than the hero shot — a poster/key-art product moment.
+> Screen shows a live inventory-sync animation: stock counts across three
+> store icons updating simultaneously, connected by thin animated lines, in
+> brand blue and magenta. Background: a soft dark gradient from ink navy
+> (#142A4B) at the edges to a lighter navy glow directly behind the device —
+> this sits on a dark section of the page, so keep the screen bright enough
+> to read clearly against it.
+
+**File:** `/public/images/work/retailos-requirements-fan.jpg` — **Generate at:** 1400 × 1200 px, JPG
+> Three to four device mockups (mix of tablet and phone) fanned out and
+> overlapping like a hand of cards, each showing a different RetailOS screen
+> (POS checkout, inventory dashboard, low-stock alert, store comparison) —
+> the front-most device facing the camera straight-on, others fanned behind
+> at increasing angles. Soft studio lighting on a warm, light cream
+> background. Subtle drop shadows under each device for depth.
+
+**Gallery (5 images), 1080 × 1920 px each, JPG (9:16), plain studio
+background, no hand, no scene — consistent device-mockup style across all
+five:**
+
+| File | Screen to depict |
+|---|---|
+| `/public/images/work/retailos-gallery-1.jpg` | POS checkout screen — product grid, running cart total, brand-blue "Charge" button. |
+| `/public/images/work/retailos-gallery-2.jpg` | Multi-location inventory dashboard — a table/card list of stores each with a live stock count and a small trend arrow. |
+| `/public/images/work/retailos-gallery-3.jpg` | Low-stock alert & restock flow — a red-flagged product card with a suggested reorder quantity and a brand-blue "Reorder" button. |
+| `/public/images/work/retailos-gallery-4.jpg` | Store performance comparison view — a horizontal bar chart ranking stores by sales, brand blue and magenta bars. |
+| `/public/images/work/retailos-gallery-5.jpg` | Order fulfillment tracking — a vertical status timeline (Placed → Picked → Packed → Shipped) with the current step highlighted in brand blue. |
+
+---
+
+### 2h. FlowMind AI — AI agent automation platform
+**Status:** concept case study — fictional client, real generated mockups.
+Client credited as "Confidential." Lead accent: violet with brand-blue
+accents (ties to the AI/agent visual language already used elsewhere on the
+site, without reusing literal robot imagery).
+
+**File:** `/public/images/work/flowmind-ai-cover.jpg` — **Generate at:** 2400 × 1650 px, JPG
+> A widescreen monitor on a desk showing FlowMind AI's ticket-triage UI: an
+> incoming-ticket list on the left, and on the right an open ticket with a
+> drafted response and a confidence badge in violet (#5F2BC9), plus a
+> brand-blue "Approve & Send" button. Modern office setting, soft daylight
+> from an out-of-focus window. Convey: calm, capable automation — not a
+> sci-fi AI control room.
+
+**File:** `/public/images/work/flowmind-ai-hero.jpg` — **Generate at:** 1600 × 1600 px, JPG
+> A laptop centered, screen facing the camera straight-on, showing FlowMind
+> AI's main dashboard: a donut chart of "auto-resolved vs. routed to human"
+> tickets, in violet and brand blue, with one large percentage KPI above it.
+> Clean, soft pale-gray studio background, even margin on all sides for a
+> clean square crop.
+
+**File:** `/public/images/work/flowmind-ai-showcase.jpg` — **Generate at:** 1200 × 2100 px, JPG (≈4:7)
+> A single laptop, dead-center, facing the camera straight-on, poster/key-art
+> style. Screen shows an animated reasoning trail: a ticket icon at top with
+> a branching flowchart below it (Classify → Check Policy → Resolve /
+> Route), each node lighting up in violet as if mid-execution. Background: a
+> soft dark gradient from ink navy (#142A4B) at the edges to a violet-tinted
+> glow directly behind the laptop, bright enough to read against the dark
+> page section it sits on.
+
+**File:** `/public/images/work/flowmind-ai-requirements-fan.jpg` — **Generate at:** 1400 × 1200 px, JPG
+> Three to four laptop/tablet mockups fanned and overlapping like a hand of
+> cards, each showing a different FlowMind AI screen (ticket triage, agent
+> resolution with reasoning, human review queue, automation dashboard) — the
+> front-most device facing the camera straight-on, others fanned behind at
+> increasing angles. Soft studio lighting, light cool-gray background.
+> Subtle drop shadows for depth.
+
+**Gallery (5 images), 1080 × 1920 px each, JPG (9:16), plain studio
+background, consistent device-mockup style:**
+
+| File | Screen to depict |
+|---|---|
+| `/public/images/work/flowmind-ai-gallery-1.jpg` | Ticket triage & classification view — an incoming ticket with an auto-assigned category tag and confidence percentage in violet. |
+| `/public/images/work/flowmind-ai-gallery-2.jpg` | Agent resolution with reasoning trail — a drafted reply plus a collapsed "Why the agent did this" panel with 2-3 bullet reasons. |
+| `/public/images/work/flowmind-ai-gallery-3.jpg` | Human review & override queue — a list of pending agent actions with brand-blue "Approve" and outlined "Edit" buttons. |
+| `/public/images/work/flowmind-ai-gallery-4.jpg` | Automation performance dashboard — a line chart of tickets auto-resolved over time, trending upward in violet. |
+| `/public/images/work/flowmind-ai-gallery-5.jpg` | Policy & guardrail configuration — a settings-style list of toggleable rules ("Auto-resolve refunds under $50", etc.) with on/off switches. |
+
+---
+
+### 2i. PayLedger — SMB cash-flow & expense platform
+**Status:** concept case study — fictional client, real generated mockups.
+Client credited as "Confidential." Lead accent: ink navy with brand-blue
+accents — a deliberately calmer, more trustworthy palette than the other two
+concepts, appropriate for a finance product.
+
+**File:** `/public/images/work/payledger-cover.jpg` — **Generate at:** 2400 × 1650 px, JPG
+> A phone held at a slight angle in a small-business owner's hand (apron or
+> smart-casual wardrobe, standing in a shop or small office — not a bank),
+> screen showing PayLedger's cash-flow dashboard: a line graph of cash
+> position over the next 30 days, in brand blue (#104DFC), with one large
+> "Cash on hand" number above it in ink navy (#142A4B) text. Soft natural
+> light, shallow depth of field blurring the background into a calm bokeh.
+> Convey: clarity, control, quiet confidence about money.
+
+**File:** `/public/images/work/payledger-hero.jpg` — **Generate at:** 1600 × 1600 px, JPG
+> A phone centered and upright, facing the camera straight-on, screen
+> showing the same cash-flow dashboard as the cover. Clean, soft pale
+> blue-gray studio background (#EAEEF8), even margin on all sides for a
+> clean square crop — calm enough to sit beside text.
+
+**File:** `/public/images/work/payledger-showcase.jpg` — **Generate at:** 1200 × 2100 px, JPG (≈4:7)
+> A single phone, dead-center, facing the camera straight-on, poster/key-art
+> style, larger and more dramatic than the hero shot. Screen shows a
+> forecast alert moment: a calendar strip with one date highlighted in a
+> warm amber warning tone, and a brand-blue "Review Forecast" button below
+> it. Background: a soft dark gradient from ink navy (#142A4B) at the edges
+> to a lighter navy glow directly behind the phone, bright enough to read
+> against the dark page section it sits on.
+
+**File:** `/public/images/work/payledger-requirements-fan.jpg` — **Generate at:** 1400 × 1200 px, JPG
+> Three to four phone mockups fanned and overlapping like a hand of cards,
+> each showing a different PayLedger screen (cash-flow dashboard, receipt
+> capture, forecast alert, multi-account overview) — the front-most phone
+> facing the camera straight-on, others fanned behind at increasing angles.
+> Soft studio lighting on a warm, light cream background. Subtle drop
+> shadows for depth.
+
+**Gallery (5 images), 1080 × 1920 px each, JPG (9:16), plain studio
+background, consistent device-mockup style:**
+
+| File | Screen to depict |
+|---|---|
+| `/public/images/work/payledger-gallery-1.jpg` | Live cash-flow dashboard — a 30-day line graph, "Cash on hand" figure, brand-blue accents. |
+| `/public/images/work/payledger-gallery-2.jpg` | Receipt capture & auto-categorization — a photographed receipt thumbnail with an auto-filled category tag ("Supplies") and amount. |
+| `/public/images/work/payledger-gallery-3.jpg` | Upcoming shortfall forecast alert — a calendar strip with one date flagged in amber, a short warning message, and a "Review Forecast" button. |
+| `/public/images/work/payledger-gallery-4.jpg` | Multi-account overview — a stacked list of linked bank/card accounts, each with its own balance. |
+| `/public/images/work/payledger-gallery-5.jpg` | Expense breakdown by category — a simple donut chart with a legend (Supplies, Payroll, Rent, Utilities) in brand-blue and navy tones. |
+
 ---
 
 ## 3. Team & company photography (6 images)

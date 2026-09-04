@@ -1,38 +1,23 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ChevronRight, ArrowUpRight, Sparkles } from "lucide-react";
+import { ChevronDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { services, serviceGroups } from "@/lib/data/services";
-import { products } from "@/lib/data/products";
 import { cn } from "@/lib/utils";
 
 const closeDelay = 150;
 
-type PanelId = "services" | "products";
-
-const panels: { id: PanelId; label: string; href: string; viewAllLabel: string }[] = [
-  { id: "services", label: "All Services", href: "/services", viewAllLabel: "View all services" },
-  { id: "products", label: "Products", href: "/products", viewAllLabel: "View all products" },
-];
-
 export function ServicesMenu({ active }: { active?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  // Tabs the rail switches between — hovering/selecting a rail item swaps
-  // the content shown, it doesn't navigate. Only the "View all…" link and
-  // individual items inside a panel actually go anywhere.
-  const [activePanel, setActivePanel] = useState<PanelId>(
-    pathname.startsWith("/products") ? "products" : "services"
-  );
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const panelId = useId();
 
   const clearTimer = () => {
     if (closeTimer.current) {
@@ -72,8 +57,6 @@ export function ServicesMenu({ active }: { active?: boolean }) {
     onMouseLeave: scheduleClose,
   };
 
-  const activeMeta = panels.find((p) => p.id === activePanel)!;
-
   return (
     // Keyed by pathname: on navigation, React fully unmounts and remounts
     // this component instead of relying on AnimatePresence's exit animation
@@ -86,7 +69,7 @@ export function ServicesMenu({ active }: { active?: boolean }) {
           type="button"
           aria-expanded={open}
           aria-haspopup="true"
-          aria-controls={panelId}
+          aria-controls="services-menu-panel"
           onClick={() => setOpen((v) => !v)}
           className={cn(
             "inline-flex h-10 items-center gap-1 rounded-full px-4 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-foreground",
@@ -101,7 +84,7 @@ export function ServicesMenu({ active }: { active?: boolean }) {
       <AnimatePresence>
         {open && (
           <motion.div
-            id={panelId}
+            id="services-menu-panel"
             role="menu"
             {...hoverProps}
             initial={{ opacity: 0, y: -6 }}
@@ -111,91 +94,36 @@ export function ServicesMenu({ active }: { active?: boolean }) {
             className="fixed inset-x-0 top-16 z-40 border-t border-b border-border bg-background shadow-xl shadow-black/[0.06]"
           >
             <Container>
-              <div className="grid grid-cols-[220px_1fr_260px]">
-                {/* Quick-nav rail — switches the panel on hover/focus, doesn't navigate itself */}
-                <div className="flex flex-col gap-1 border-r border-border py-6 pr-6" role="tablist">
-                  {panels.map((panel) => {
-                    const isActive = activePanel === panel.id;
-                    return (
-                      <button
-                        key={panel.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={isActive}
-                        onMouseEnter={() => setActivePanel(panel.id)}
-                        onFocus={() => setActivePanel(panel.id)}
-                        onClick={() => setActivePanel(panel.id)}
-                        className={cn(
-                          "flex items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors",
-                          isActive ? "bg-surface text-foreground" : "text-muted hover:bg-surface hover:text-foreground"
-                        )}
-                      >
-                        {panel.label}
-                        <ChevronRight className="size-3.5 text-muted-2" />
-                      </button>
-                    );
-                  })}
+              <div className="grid grid-cols-[1fr_260px]">
+                <div className="grid grid-cols-3 py-6">
+                  {serviceGroups.map((group, i) => (
+                    <div key={group} className={cn("px-6", i > 0 && "border-l border-border")}>
+                      <p className="text-[11px] font-semibold uppercase tracking-wider text-label-accent">
+                        {group}
+                      </p>
+                      <ul className="mt-3 flex flex-col gap-1">
+                        {services
+                          .filter((s) => s.group === group)
+                          .map((service) => (
+                            <li key={service.slug}>
+                              <Link
+                                href={`/services/${service.slug}`}
+                                role="menuitem"
+                                onClick={() => setOpen(false)}
+                                className="group -mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-surface hover:text-foreground"
+                              >
+                                <Icon
+                                  name={service.icon}
+                                  className="size-4 shrink-0 text-muted-2 transition-colors group-hover:text-primary"
+                                />
+                                {service.navLabel}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
-
-                {/* Panel content */}
-                {activePanel === "services" ? (
-                  <div className="grid grid-cols-3">
-                    {serviceGroups.map((group, i) => (
-                      <div key={group} className={cn("px-6 py-6", i > 0 && "border-l border-border")}>
-                        <p className="text-[11px] font-semibold uppercase tracking-wider text-label-accent">
-                          {group}
-                        </p>
-                        <ul className="mt-3 flex flex-col gap-1">
-                          {services
-                            .filter((s) => s.group === group)
-                            .map((service) => (
-                              <li key={service.slug}>
-                                <Link
-                                  href={`/services/${service.slug}`}
-                                  role="menuitem"
-                                  onClick={() => setOpen(false)}
-                                  className="group -mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-surface hover:text-foreground"
-                                >
-                                  <Icon
-                                    name={service.icon}
-                                    className="size-4 shrink-0 text-muted-2 transition-colors group-hover:text-primary"
-                                  />
-                                  {service.navLabel}
-                                </Link>
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="px-6 py-6">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-label-accent">
-                      Our Products
-                    </p>
-                    <ul className="mt-3 grid grid-cols-2 gap-1">
-                      {products.map((product) => (
-                        <li key={product.slug}>
-                          <Link
-                            href={`/products#${product.slug}`}
-                            role="menuitem"
-                            onClick={() => setOpen(false)}
-                            className="group -mx-2 flex items-start gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-surface hover:text-foreground"
-                          >
-                            <Icon
-                              name={product.icon}
-                              className="mt-0.5 size-4 shrink-0 text-muted-2 transition-colors group-hover:text-primary"
-                            />
-                            <span>
-                              {product.name}
-                              <span className="block text-xs font-normal text-muted">{product.tagline}</span>
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
 
                 {/* Featured CTA */}
                 <div className="flex flex-col justify-between gap-4 border-l border-border py-6 pl-6">
@@ -203,13 +131,9 @@ export function ServicesMenu({ active }: { active?: boolean }) {
                     <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
                       <Sparkles className="size-4" />
                     </div>
-                    <h3 className="mt-3 font-display text-base font-semibold">
-                      {activePanel === "services" ? "Not sure where to start?" : "Curious how these work?"}
-                    </h3>
+                    <h3 className="mt-3 font-display text-base font-semibold">Not sure where to start?</h3>
                     <p className="mt-1.5 text-sm text-muted">
-                      {activePanel === "services"
-                        ? "Tell us about your project — we’ll point you to the right service, free of charge."
-                        : "Tell us what you’re building — we’ll show you how our tools could fit in."}
+                      Tell us about your project — we’ll point you to the right service, free of charge.
                     </p>
                     <Button href="/contact" size="sm" onClick={() => setOpen(false)} className="mt-4 w-full">
                       Talk to us <ArrowUpRight className="size-3.5" />
@@ -219,11 +143,11 @@ export function ServicesMenu({ active }: { active?: boolean }) {
               </div>
 
               <Link
-                href={activeMeta.href}
+                href="/services"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-between border-t border-border py-4 text-sm font-medium text-foreground transition-colors hover:text-primary"
               >
-                {activeMeta.viewAllLabel}
+                View all services
                 <ArrowUpRight className="size-3.5" />
               </Link>
             </Container>
