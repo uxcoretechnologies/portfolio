@@ -112,16 +112,17 @@ approach already documented for other assets in this file.
 
 ---
 
-## 2. Case study covers (6 images), plus VoltPath's full detail-page set
+## 2. Case study covers and full detail-page sets
 
-Each project needs **one** high-resolution cover image for the grid cards.
-VoltPath is the pilot case study — its detail page (`/work/voltpath`) now
-follows the fuller structure researched from
+`/work` currently carries four case studies. **AFS Desk** is real client
+work with real screenshots already placed (see `projects.ts` — no
+generation brief needed, nothing below applies to it). The other three —
+**RetailOS**, **FlowMind AI**, **PayLedger** — are concept case studies
+(fictional client, credited as "Confidential" on the page) that follow the
+fuller detail-page structure researched from
 [martiancorporation.com/case-studies/ev-india](https://martiancorporation.com/case-studies/ev-india)
 (overview, a showcase break, requirements, a screen gallery, and a
-testimonial), so it needs several additional images beyond the cover. The
-other five projects still use the simpler cover-only treatment below until
-you're ready to expand them the same way.
+testimonial), so each needs the full 8-image set below, not just a cover.
 
 **Generate at:** 2400 × 1650 px, JPG, quality 90+
 **Style:** a realistic device mockup (laptop and/or phone, angled 3/4 or
@@ -130,149 +131,6 @@ environment or on a subtle gradient studio backdrop. Not a flat screenshot
 floating on white — give it physical context (a desk, a hand holding a
 phone, a studio surface) so it reads as a real product photo, not a UI kit
 export.
-
-### 2a. VoltPath — EV charging app (cover)
-**File:** `/public/images/work/voltpath-cover.jpg`
-**Used on:** homepage "Our latest creations", `/work`
-
-> A smartphone held at a slight angle in a driver's hand, screen showing a
-> clean EV-charging app UI: a map view with pin markers for charging
-> stations, a bottom sheet card showing charger availability and a "Start
-> Charging" button in brand blue (#104DFC). Background: a modern EV parked
-> at a charging station at dusk, soft blue-violet ambient light, shallow
-> depth of field blurring the car and charger into a soft bokeh. The phone
-> screen is the sharp focal point. Convey: mobility, clean energy, calm
-> confidence. Compose with generous headroom on all sides — this same shot
-> also needs to crop cleanly to a square for the detail-page hero (2a-i
-> below covers that crop specifically if you'd rather generate it separately).
-
----
-
-#### VoltPath detail page — additional images (7)
-
-These back the sections unique to VoltPath's expanded template. All should
-feel like screenshots from the **same** app as the cover above — same UI
-kit, same blue accent, same map-and-charging visual language — so the page
-reads as one consistent product, not six unrelated renders.
-
-##### 2a-i. Hero mockup (square)
-**File:** `/public/images/work/voltpath-hero.jpg`
-**Used on:** `/work/voltpath` hero, right column
-**Generate at:** 1600 × 1600 px, JPG
-
-> A smartphone centered and held upright (portrait, facing the camera
-> straight-on this time rather than angled), screen showing the VoltPath
-> app's main map/discovery screen — charging station pins, a bottom sheet
-> with a station name and a blue "Navigate" button. Clean, soft studio
-> background in a very light gray or pale blue-white gradient (no outdoor
-> scene this time — this version needs to sit calmly beside text, not
-> compete with it). The phone fills most of the frame with even margin on
-> all sides so it crops well to a perfect square.
-
-##### 2a-ii. Showcase poster (portrait)
-**File:** `/public/images/work/voltpath-showcase.jpg`
-**Used on:** `/work/voltpath`, the dark full-width "VOLTPATH — Charge
-anywhere, anytime" break in the middle of the page
-**Generate at:** 1200 × 2100 px, JPG (roughly 4:7)
-
-> A single smartphone, dead-center, facing the camera straight-on, shown
-> larger and more dramatic than the hero shot — like a poster/key-art
-> product shot. Screen shows the same app's charging-session-in-progress
-> screen: a large circular progress ring showing charge percentage, the
-> car's estimated range ticking up, in brand blue. Background: a soft,
-> dark gradient fading from ink navy (#142A4B) at the edges to a slightly
-> lighter navy glow directly behind the phone, since this image sits on a
-> dark section of the page — make sure the phone and its screen are bright
-> enough to stand out clearly against that dark backdrop. Minimal, epic,
-> centered — this is the one "hero shot" moment of the whole case study.
-
-##### 2a-iii. Fanned app screens (square-ish)
-**File:** `/public/images/work/voltpath-requirements-fan.jpg`
-**Used on:** `/work/voltpath`, beside the "Defining Project Requirements" list
-**Generate at:** 1400 × 1200 px, JPG
-
-> Three to four phone mockups fanned out and overlapping like a hand of
-> playing cards, each showing a different VoltPath app screen (map
-> discovery, charger detail, a live charging session, payment/receipt) —
-> the front-most phone facing the camera straight-on, the others fanned
-> behind it at increasing angles to the left and right. Soft studio
-> lighting on a warm, light cream/beige background (not white — something
-> soft and warm to contrast with the app's blue UI). Subtle drop shadows
-> under the phones for depth. Convey: a confident, finished, multi-screen
-> product — this is a "look how much we built" moment, not a planning
-> artifact.
-
-##### 2a-iv to 2a-viii. Screen gallery (5 images)
-**Used on:** `/work/voltpath`, the "More screens" grid
-**Generate at:** 1080 × 1920 px each, JPG (9:16, phone-screen shaped)
-**Style:** a plain phone screen mockup for each — no hand, no background
-scene, just the device facing the camera straight-on against a plain
-light-gray studio background, consistent across all five so they read as
-one gallery. Same blue accent color and UI style as the cover and hero
-images above.
-
-| File | Screen to depict |
-|---|---|
-| `/public/images/work/voltpath-gallery-1.jpg` | Map & charger discovery screen — a full-screen map with several pin markers, a search bar at top, a bottom sheet card peeking up showing one station's name and distance. |
-| `/public/images/work/voltpath-gallery-2.jpg` | Charger detail & availability view — a station name and photo at top, a grid of charging bay icons color-coded (available in blue, in-use in gray), and a blue "Navigate" button. |
-| `/public/images/work/voltpath-gallery-3.jpg` | Live charging session screen — a large circular progress ring mid-charge, kWh delivered and estimated time remaining below it, a "Stop Charging" text link. |
-| `/public/images/work/voltpath-gallery-4.jpg` | Payment & receipt flow — a clean receipt-style summary: session duration, kWh used, total cost, and a blue "Pay Now" button. |
-| `/public/images/work/voltpath-gallery-5.jpg` | Account & vehicle profile screen — a profile header with a name and avatar placeholder, and a simple vehicle card below showing a car icon, model name, and battery range. |
-
----
-
-### 2b. Buildyard — construction site management app
-**File:** `/public/images/work/buildyard-cover.jpg`
-**Used on:** `/work`, `/work/buildyard`
-
-> A rugged tablet or phone in a hi-vis-gloved hand on an active construction
-> site, screen showing a site-management app UI: a task checklist, a photo
-> log thumbnail grid, and a progress bar in brand blue. Background: an
-> out-of-focus construction site at golden hour — scaffolding, a crane
-> silhouette, warm natural light. The device and its screen are the sharp
-> focal point. Convey: field-ready reliability, organization amid complexity.
-
-### 2c. Kolkata Mart — e-commerce marketplace
-**File:** `/public/images/work/kolkata-mart-cover.jpg`
-**Used on:** `/work`, `/work/kolkata-mart`
-
-> A laptop on a clean desk showing a modern e-commerce storefront UI: a
-> product grid with clear pricing, a sticky "Add to Cart" button in brand
-> blue, and a minimal top nav. Soft studio lighting, a blurred coffee cup
-> and notebook in the foreground for depth. Neutral desk surface (light
-> wood or matte white). Convey: speed, trustworthy checkout, retail polish.
-
-### 2d. AssetFlow — enterprise asset management dashboard
-**File:** `/public/images/work/assetflow-cover.jpg`
-**Used on:** `/work`, `/work/assetflow`
-
-> A widescreen monitor on a desk in a modern office, showing an enterprise
-> analytics dashboard: a sidebar nav, KPI cards, and a line chart trending
-> upward, rendered in ink navy (#142A4B) and brand blue with white
-> backgrounds. Slightly elevated three-quarter angle so the screen fills
-> most of the frame. Soft daylight from an out-of-focus window in the
-> background. Convey: control, clarity, enterprise-grade trust.
-
-### 2e. Ashsheefa Health — hospital patient app
-**File:** `/public/images/work/ashsheefa-health-cover.jpg`
-**Used on:** `/work`, `/work/ashsheefa-health`
-
-> A phone screen showing a healthcare app UI: an appointment card with a
-> doctor's name and time slot, a calendar strip, and a soft rounded "Book
-> Appointment" button in brand blue. Held in a relaxed hand in a bright,
-> calm setting — soft natural light, a hint of a plant or clean interior in
-> the background, nothing clinical or cold. Convey: reassurance, simplicity,
-> approachable healthcare.
-
-### 2f. ManageOps — operations workflow platform
-**File:** `/public/images/work/manageops-cover.jpg`
-**Used on:** `/work`, `/work/manageops`
-
-> A laptop screen showing an operations dashboard UI: a kanban-style board
-> with task cards, status labels, and an SLA countdown badge in brand
-> violet (#5F2BC9). Overhead or angled desk shot, minimal modern workspace,
-> soft neutral tones with the screen's blue/violet UI as the main color
-> pop. Convey: coordination, momentum, teams in sync.
 
 ### 2g. RetailOS — multi-location retail operations platform
 **Status:** concept case study — fictional client, real generated mockups.
@@ -537,45 +395,18 @@ the image (the site overlays its own title text elsewhere).
 
 ---
 
-## 5. Optional — product mockups (3 images, nice-to-have)
-
-The `/products` page currently uses icon tiles only and doesn't strictly
-need imagery, but a real product screenshot mockup per product would lift
-that page to match the rest of the site. Lower priority than sections 1–4.
-
-**Generate at:** 1920 × 1200 px, JPG
-**Style:** same realistic device-mockup treatment as the case study covers.
-
-### 5a. CoreFlow
-**File:** `/public/images/products/core-flow.jpg`
-> A laptop showing a workflow-automation dashboard UI: a horizontal pipeline
-> of connected task cards with checkmarks, in brand blue and violet, on a
-> clean desk with soft studio lighting.
-
-### 5b. CoreInsights
-**File:** `/public/images/products/core-insights.jpg`
-> A laptop showing a web analytics dashboard UI: a heatmap overlay on a
-> webpage thumbnail plus a session-replay timeline scrubber below it, in
-> brand blue accents, clean desk setting.
-
-### 5c. CoreAgent
-**File:** `/public/images/products/core-agent.jpg`
-> A laptop showing a chat-style support-agent interface UI: a conversation
-> thread with a brand-blue "agent" message bubble and a subtle "typing"
-> indicator, clean minimal desk setting, soft daylight.
-
----
-
 ## Once assets are generated
 
 1. Drop each file at the exact path listed above (create the folders if
    they don't exist: `public/videos/`, `public/images/work/`,
    `public/images/about/team/`, `public/images/home/`,
-   `public/images/blog/`, `public/images/products/`).
-2. For images: in the corresponding component, swap `<PlaceholderMedia .../>`
-   for Next's `<Image src="/images/..." alt="..." fill className="..." />` —
-   see [README.md](README.md#swapping-in-real-graphicsassets) for the
-   exact pattern already documented there. Write real `alt` text per image
-   (a couple of words describing what's shown, not the prompt itself).
+   `public/images/blog/`).
+2. For images: `PlaceholderMedia` already accepts `src`/`alt` props (see
+   `src/components/ui/placeholder-media.tsx`) — pass them from the matching
+   field on the project/data object (e.g. `coverImage`, `heroImage`,
+   `showcaseImage`, `requirementsImage`, or a `gallery` entry shaped as
+   `{ src, alt }`) and it renders the real image instead of the gradient
+   placeholder automatically. Write real `alt` text per image (a couple of
+   words describing what's shown, not the prompt itself).
 3. For the hero video: swap `<HeroArt />` for a muted, looping `<video>`
    element pointing at the two exported files and the poster image.
