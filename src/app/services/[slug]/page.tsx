@@ -12,6 +12,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { services } from "@/lib/data/services";
 import { cn } from "@/lib/utils";
+import { pageMetadata, absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -25,7 +26,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
-  return { title: service.title, description: service.summary };
+  return pageMetadata({
+    title: service.title,
+    description: service.description,
+    path: `/services/${service.slug}`,
+    image: { kind: "generated", title: service.title, eyebrow: service.group },
+  });
+}
+
+function serviceJsonLd(service: (typeof services)[number]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    serviceType: service.title,
+    url: absoluteUrl(`/services/${service.slug}`),
+    provider: { "@type": "Organization", name: "UX Core Technologies", url: absoluteUrl("/") },
+  };
 }
 
 export default async function ServiceDetailPage({
@@ -41,6 +59,11 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd(service)) }}
+      />
       <Band tone="light">
         {/* Hero */}
         <section className="pt-20 pb-16 sm:pt-28">

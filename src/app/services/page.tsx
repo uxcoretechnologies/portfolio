@@ -8,12 +8,15 @@ import { Reveal } from "@/components/ui/reveal";
 import { Band } from "@/components/ui/band";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { services } from "@/lib/data/services";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
-    "UX/UI design, web and mobile development, AI agents, data engineering, enterprise solutions, and IoT — placeholder service overview for UX Core Technologies.",
-};
+    "UX/UI design, web and mobile development, AI agents, data engineering, enterprise solutions, and IoT — the full range of services UX Core Technologies delivers.",
+  path: "/services",
+  image: { kind: "generated", title: "Flexible solutions for every business model", eyebrow: "Services" },
+});
 
 export default function ServicesPage() {
   return (
@@ -24,7 +27,7 @@ export default function ServicesPage() {
             <SectionHeading
               eyebrow="Services"
               title="Flexible solutions for every business model."
-              description="Placeholder: from early-stage product design to enterprise-scale platforms, every engagement pairs senior design and engineering talent."
+              description="From early-stage product design to enterprise-scale platforms, every engagement pairs senior design and engineering talent."
             />
           </Reveal>
         </Container>

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { LegalLayout, type LegalSection } from "@/components/legal/legal-layout";
 import { site } from "@/lib/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description: `How ${site.name} collects, uses, and protects your information.`,
-};
+  path: "/privacy",
+  image: { kind: "generated", title: "Privacy Policy", eyebrow: site.shortName },
+});
 
 const sections: LegalSection[] = [
   {

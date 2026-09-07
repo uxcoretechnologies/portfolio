@@ -8,22 +8,22 @@ const points = [
   {
     icon: Users2,
     title: "Dedicated senior team",
-    description: "Placeholder: no junior-heavy staffing — you work directly with senior designers and engineers.",
+    description: "No junior-heavy staffing — you work directly with senior designers and engineers.",
   },
   {
     icon: Gauge,
     title: "Built for performance",
-    description: "Placeholder: every product ships against a measurable performance and accessibility budget.",
+    description: "Every product ships against a measurable performance and accessibility budget.",
   },
   {
     icon: Layers,
     title: "Design-to-code, unified",
-    description: "Placeholder: the same team owns UX, UI, and engineering — no handoff gaps, no lost context.",
+    description: "The same team owns UX, UI, and engineering — no handoff gaps, no lost context.",
   },
   {
     icon: ShieldCheck,
     title: "Enterprise-grade rigor",
-    description: "Placeholder: security, testing, and documentation practices that scale with your compliance needs.",
+    description: "Security, testing, and documentation practices that scale with your compliance needs.",
   },
 ];
 
@@ -36,6 +36,8 @@ export function WhyUs() {
             label="Team / product photography placeholder"
             ratio="aspect-square"
             gradient="from-primary/25 via-surface-2 to-accent/15"
+            src="/images/about/enabling-teams.png"
+            alt="The UX Core Technologies team collaborating around a laptop"
           />
         </Reveal>
 
@@ -43,7 +45,7 @@ export function WhyUs() {
           <SectionHeading
             eyebrow="Why UX Core"
             title="Enabling teams to move beyond development"
-            description="Placeholder: we act as an extension of your team, not a vendor waiting on a spec — bringing product thinking to every engagement."
+            description="We act as an extension of your team, not a vendor waiting on a spec — bringing product thinking to every engagement."
           />
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {points.map((point) => (

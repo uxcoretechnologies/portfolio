@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
@@ -9,27 +10,30 @@ import { Industries } from "@/components/sections/industries";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { countries } from "@/lib/data/misc";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
-  description: "Placeholder company story, values, and team overview for UX Core Technologies.",
-};
+  description:
+    "UX Core Technologies is a Kolkata-based product design and engineering studio — senior designers and engineers, staffed on real client work, not a spec-execution vendor.",
+  path: "/about",
+  image: { kind: "generated", title: "We build the products behind ambitious companies", eyebrow: "About Us" },
+});
 
 const values = [
   {
     title: "Research before pixels",
-    description: "Placeholder: we validate problems with real users before committing to a solution.",
+    description: "We validate problems with real users before committing to a solution.",
   },
   {
     title: "Senior talent only",
-    description: "Placeholder: every engagement is staffed with senior designers and engineers, not trainees.",
+    description: "Every engagement is staffed with senior designers and engineers, not trainees.",
   },
   {
     title: "Outcomes over output",
-    description: "Placeholder: we measure success in business impact, not just delivered tickets.",
+    description: "We measure success in business impact, not just delivered tickets.",
   },
   {
     title: "Transparent by default",
-    description: "Placeholder: weekly demos, open roadmaps, and no black-box development.",
+    description: "Weekly demos, open roadmaps, and no black-box development.",
   },
 ];
 
@@ -43,7 +47,7 @@ export default function AboutPage() {
               <SectionHeading
                 eyebrow="About us"
                 title="We build the products behind ambitious companies"
-                description="Placeholder: UX Core Technologies started as a small design studio and grew into a full-stack product partner — without losing the obsession with craft that got us here."
+                description="UX Core Technologies started as a small design studio and grew into a full-stack product partner — without losing the obsession with craft that got us here."
               />
             </Reveal>
           </Container>

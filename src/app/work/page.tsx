@@ -8,11 +8,14 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { Band } from "@/components/ui/band";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { projects } from "@/lib/data/projects";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Work",
-  description: "Placeholder case studies across mobility, healthcare, e-commerce, and enterprise operations.",
-};
+  description: "Case studies in CRM software, vocational training, retail operations, and business automation.",
+  path: "/work",
+  image: { kind: "generated", title: "Our latest creations", eyebrow: "Case Studies" },
+});
 
 export default function WorkPage() {
   return (
@@ -23,7 +26,7 @@ export default function WorkPage() {
             <SectionHeading
               eyebrow="Our work"
               title="Our latest creations"
-              description="Placeholder case studies. Replace with real client work, metrics, and screenshots as engagements complete."
+              description="A snapshot of products we've helped design, build, and ship — from mobile CRM platforms to AI-driven automation."
             />
           </Reveal>
         </Container>

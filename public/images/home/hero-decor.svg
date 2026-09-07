@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="843" height="600.49" viewBox="0 0 843 600.49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="heroDecor">
+<path id="Vector" d="M48.6335 48.0727C205 -110.01 366.778 174.073 505.607 154.61C624.479 137.927 761.866 53.6335 824.339 169.486C879.003 270.51 809.588 414.168 668.157 514.264C552.494 671.739 315.879 576.362 177.918 518.899C41.6921 462.362 -17.3101 336.314 4.38185 215.827C11.0139 178.99 13.6004 83.4902 48.6335 48.0727Z" fill="url(#paint0_linear_0_48)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_48" x1="-4.80295e-05" y1="12.5205" x2="515.776" y2="789.421" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EDF4FF"/>
+<stop offset="1" stop-color="#EFEDF3"/>
+</linearGradient>
+</defs>
+</svg>

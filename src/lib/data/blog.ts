@@ -31,7 +31,7 @@ export const posts: Post[] = [
     date: "2026-07-14",
     readTime: "6 min read",
     image: "/images/blog/ai-in-digital-transformation.jpg",
-    author: { name: "Placeholder Name", role: "Founder & CEO" },
+    author: { name: "Arnab Sengupta", role: "Founder & CEO" },
     content: [
       p(
         "AI stopped being a differentiator a while ago. It's now closer to a baseline expectation — the question boards ask isn't \"should we use AI,\" it's \"why haven't we shipped more with it yet.\" That pressure is producing a strange gap: adoption is accelerating fast, but the share of companies who've actually reached full-scale, production AI use is still comparatively small. Most organizations are somewhere in the middle — a few live pilots, a lot of enthusiasm, and not much of it tied to a number anyone can point to."
@@ -78,7 +78,7 @@ export const posts: Post[] = [
     date: "2026-06-30",
     readTime: "5 min read",
     image: "/images/blog/ux-research-that-ships.jpg",
-    author: { name: "Placeholder Name", role: "Head of Design" },
+    author: { name: "Leah Fernandes", role: "Head of Design" },
     content: [
       p(
         "Every product team says research matters. Almost every product team cuts it first when a deadline tightens. That's not because research is undervalued — it's because most teams have only ever seen research done one way: weeks of recruiting, a formal discussion guide, a polished readout deck. When a sprint is two weeks long, that process doesn't get \"trimmed.\" It gets skipped entirely."
@@ -123,7 +123,7 @@ export const posts: Post[] = [
     date: "2026-06-10",
     readTime: "7 min read",
     image: "/images/blog/ai-agents-explained.jpg",
-    author: { name: "Placeholder Name", role: "AI & Data Lead" },
+    author: { name: "Rohan Iyer", role: "AI & Data Lead" },
     content: [
       p(
         "\"Agent\" gets applied to almost anything with a chat interface these days, which has made the word close to meaningless in a lot of vendor conversations. It's worth being precise about it, because the distinction isn't marketing — it determines what you can safely let a system do without a human checking every step."
@@ -168,7 +168,7 @@ export const posts: Post[] = [
     date: "2026-05-22",
     readTime: "4 min read",
     image: "/images/blog/performance-budgets.jpg",
-    author: { name: "Placeholder Name", role: "Head of Engineering" },
+    author: { name: "Kabir Malhotra", role: "Head of Engineering" },
     content: [
       p(
         "Conversion rate tends to fall off sharply as load time climbs from around one second to around five — and most of that drop happens well before five seconds arrives. Speed isn't a UX nicety anymore. It's a number on the same page as revenue, and it's usually one of the cheapest levers a team has to move that number."
@@ -215,7 +215,7 @@ export const posts: Post[] = [
     date: "2026-05-02",
     readTime: "6 min read",
     image: "/images/blog/modernizing-data-stacks.jpg",
-    author: { name: "Placeholder Name", role: "AI & Data Lead" },
+    author: { name: "Rohan Iyer", role: "AI & Data Lead" },
     content: [
       p(
         "The riskiest part of modernizing a data stack usually isn't the migration itself — it's the week after cutover, when finance pulls a report, the number looks different from last month, and nobody can say with confidence whether that's real or an artifact of the new pipeline. Once that happens once, trust in the new system takes months to rebuild, regardless of how much better the underlying architecture actually is."

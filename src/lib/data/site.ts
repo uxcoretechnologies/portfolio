@@ -4,6 +4,12 @@ export const site = {
   tagline: "Design-Led Software for Ambitious Companies",
   description:
     "UX Core Technologies designs and builds digital products, AI agents, and enterprise platforms — engineered with research-backed UX at the core, not bolted on at the end.",
+  // Canonical domain — every absolute URL (metadataBase, sitemap, JSON-LD,
+  // OG image URLs) is derived from this single value. Previously the site
+  // used "uxcoretech.com" in a few places while every other reference
+  // (email, sitemap host) pointed at "uxcoretechnologies.com" — that
+  // mismatch would have shipped wrong canonical/OG URLs.
+  url: "https://www.uxcoretechnologies.com",
   email: "info@uxcoretechnologies.com",
   // Call and WhatsApp are two different numbers — kept as separate pairs
   // (a display string + a digits-only one for the tel:/wa.me href, country

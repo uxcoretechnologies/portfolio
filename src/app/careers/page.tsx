@@ -10,11 +10,14 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { ApplyForm } from "@/components/forms/apply-form";
 import { openRoles, perks, values } from "@/lib/data/careers";
 import { site } from "@/lib/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Careers",
   description: `Open roles at ${site.name} — design and engineering positions, based in Kolkata or remote.`,
-};
+  path: "/careers",
+  image: { kind: "generated", title: "Build what's next, with us", eyebrow: "Careers" },
+});
 
 export default function CareersPage() {
   return (

@@ -15,6 +15,7 @@ import { ProjectGallery } from "@/components/sections/project-gallery";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { projects } from "@/lib/data/projects";
 import { cn } from "@/lib/utils";
+import { pageMetadata, absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -28,7 +29,27 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
-  return { title: project.name, description: project.summary };
+  return pageMetadata({
+    title: `${project.name} — Case Study`,
+    description: project.summary,
+    path: `/work/${project.slug}`,
+    image: project.coverImage
+      ? { kind: "asset", url: project.coverImage.src, alt: project.coverImage.alt }
+      : { kind: "generated", title: project.name, eyebrow: project.industry },
+  });
+}
+
+function caseStudyJsonLd(project: (typeof projects)[number]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: `${project.name} — Case Study`,
+    description: project.summary,
+    about: project.industry,
+    url: absoluteUrl(`/work/${project.slug}`),
+    creator: { "@type": "Organization", name: "UX Core Technologies", url: absoluteUrl("/") },
+    ...(project.coverImage ? { image: absoluteUrl(project.coverImage.src) } : {}),
+  };
 }
 
 export default async function ProjectPage({
@@ -47,6 +68,11 @@ export default async function ProjectPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd(project)) }}
+      />
       <Band tone="light" className="overflow-hidden">
         {/* Big brand hero — only for case studies with real product marketing
             assets to show off (a logo, a headline, a hero CTA, a polished

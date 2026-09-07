@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { LegalLayout, type LegalSection } from "@/components/legal/legal-layout";
 import { site } from "@/lib/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
   description: `The terms governing engagements with ${site.name}.`,
-};
+  path: "/terms",
+  image: { kind: "generated", title: "Terms of Service", eyebrow: site.shortName },
+});
 
 const sections: LegalSection[] = [
   {

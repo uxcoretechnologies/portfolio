@@ -4,11 +4,14 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ContactForm } from "@/components/forms/contact-form";
 import { site } from "@/lib/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Get in touch with UX Core Technologies to discuss your next project.",
-};
+  description: `Get in touch with ${site.name} to discuss your next project — response time under 24 hours.`,
+  path: "/contact",
+  image: { kind: "generated", title: "Let's build your next product", eyebrow: "Contact" },
+});
 
 const details = [
   { icon: Mail, label: "Email", value: site.email },

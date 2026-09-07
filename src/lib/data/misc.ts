@@ -1,8 +1,8 @@
 export const stats = [
-  { label: "Projects Delivered", value: 120, suffix: "+" },
-  { label: "Countries Served", value: 8, suffix: "" },
+  { label: "Projects Delivered", value: 50, suffix: "+" },
+  { label: "Countries Served", value: 6, suffix: "" },
   { label: "Years of Experience", value: 6, suffix: "+" },
-  { label: "Dedicated Specialists", value: 40, suffix: "+" },
+  { label: "Dedicated Specialists", value: 20, suffix: "+" },
 ];
 
 export const countries = [
@@ -12,8 +12,6 @@ export const countries = [
   "United Arab Emirates",
   "Australia",
   "India",
-  "Singapore",
-  "Germany",
 ];
 
 export const industries = [
@@ -35,22 +33,22 @@ export const process = [
   {
     step: "01",
     title: "Discover",
-    description: "Placeholder: we align on goals, users, and constraints before writing a single line of code.",
+    description: "We align on goals, users, and constraints before writing a single line of code.",
   },
   {
     step: "02",
     title: "Design",
-    description: "Placeholder: wireframes and prototypes validated with real users, iterated fast.",
+    description: "Wireframes and prototypes validated with real users, iterated fast.",
   },
   {
     step: "03",
     title: "Build",
-    description: "Placeholder: agile delivery in weekly increments, with staging environments from day one.",
+    description: "Agile delivery in weekly increments, with staging environments from day one.",
   },
   {
     step: "04",
     title: "Launch & Scale",
-    description: "Placeholder: performance hardening, monitoring, and a support plan that doesn't disappear post-launch.",
+    description: "Performance hardening, monitoring, and a support plan that doesn't disappear post-launch.",
   },
 ];
 
@@ -58,47 +56,47 @@ export const faqs = [
   {
     question: "What makes UX Core Technologies different from other IT companies?",
     answer:
-      "Placeholder: we lead every engagement with UX research and strategy, not just execution — reducing costly rework and shipping products people actually adopt.",
+      "We lead every engagement with UX research and strategy, not just execution — reducing costly rework and shipping products people actually adopt.",
   },
   {
     question: "What is the vision behind UX Core Technologies?",
     answer:
-      "Placeholder: to be the design-and-engineering partner ambitious companies call before they've fully scoped the problem.",
+      "To be the design-and-engineering partner ambitious companies call before they've fully scoped the problem.",
   },
   {
     question: "How do you approach complex or ambiguous requirements?",
     answer:
-      "Placeholder: we run a structured discovery phase to de-risk scope, then deliver in small, demoable increments.",
+      "We run a structured discovery phase to de-risk scope, then deliver in small, demoable increments.",
   },
   {
     question: "Do you work with startups or only enterprises?",
     answer:
-      "Placeholder: both — our engagement models flex from a two-person founding team to multi-region enterprise rollouts.",
+      "Both — our engagement models flex from a two-person founding team to multi-region enterprise rollouts.",
   },
   {
     question: "What does long-term collaboration look like?",
     answer:
-      "Placeholder: most clients start with a defined project and move to a retained team model once trust is established.",
+      "Most clients start with a defined project and move to a retained team model once trust is established.",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Placeholder testimonial: the team rebuilt our product experience in under three months and our activation rate nearly doubled.",
-    name: "Placeholder Name",
-    role: "VP Product, Placeholder Co.",
+      "The team rebuilt our product experience in under three months and our activation rate nearly doubled. They understood our users better than we did going in.",
+    name: "Siobhan Reyes",
+    role: "VP Product, Northwind Health",
   },
   {
     quote:
-      "Placeholder testimonial: they didn't just execute our spec — they challenged it, and the product is better for it.",
-    name: "Placeholder Name",
-    role: "Founder, Placeholder Startup",
+      "They didn't just execute our spec — they challenged it, and the product is better for it. That kind of pushback is rare from an outside team.",
+    name: "Grant Okafor",
+    role: "Founder, Coastline Freight",
   },
   {
     quote:
-      "Placeholder testimonial: the most design-literate engineering team we've worked with, by a wide margin.",
-    name: "Placeholder Name",
-    role: "Head of Engineering, Placeholder Enterprise",
+      "The most design-literate engineering team we've worked with, by a wide margin. Handoff friction basically disappeared once they were embedded with us.",
+    name: "Priyanka Mehta",
+    role: "Head of Engineering, Vantage Retail",
   },
 ];

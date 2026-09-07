@@ -9,10 +9,15 @@ import { ProjectGallery } from "@/components/sections/project-gallery";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { Band } from "@/components/ui/band";
 
+// Standalone duplicate of the canonical case study at /work/afs-desk — kept
+// out of search entirely (noindex + canonical pointer) so it can't compete
+// with or dilute that page's ranking as duplicate content.
 export const metadata: Metadata = {
-  title: "AFS Desk — Case Study | UX Core Technologies",
+  title: "AFS Desk — Case Study",
   description:
     "A multi-tenant CRM platform that brings lead management, follow-ups, and team activity into one mobile-first workspace.",
+  alternates: { canonical: "/work/afs-desk" },
+  robots: { index: false, follow: true },
 };
 
 const gallery = [

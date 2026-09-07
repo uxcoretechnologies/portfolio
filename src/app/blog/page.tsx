@@ -6,11 +6,14 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { posts } from "@/lib/data/blog";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Insights",
   description: "Perspectives on design, AI, and engineering from UX Core Technologies.",
-};
+  path: "/blog",
+  image: { kind: "generated", title: "Exploring the wonders of tech", eyebrow: "Insights" },
+});
 
 export default function BlogPage() {
   const [featured, ...rest] = posts;

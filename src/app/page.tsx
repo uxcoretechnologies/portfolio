@@ -11,10 +11,26 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { BlogPreview } from "@/components/sections/blog-preview";
 import { FAQ } from "@/components/sections/faq";
 import { ContactCTA } from "@/components/sections/contact-cta";
+import { faqs } from "@/lib/data/misc";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Band tone="light">
         <Hero />
         <TrustedBy />

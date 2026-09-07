@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { Band } from "@/components/ui/band";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { posts } from "@/lib/data/blog";
+import { pageMetadata, absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -21,7 +22,28 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return pageMetadata({
+    title: post.title,
+    description: post.excerpt,
+    path: `/blog/${post.slug}`,
+    type: "article",
+    image: { kind: "asset", url: post.image, alt: post.title },
+    article: { publishedTime: new Date(post.date).toISOString(), authors: [post.author.name], section: post.category },
+  });
+}
+
+function articleJsonLd(post: (typeof posts)[number]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: absoluteUrl(post.image),
+    datePublished: new Date(post.date).toISOString(),
+    author: { "@type": "Person", name: post.author.name },
+    publisher: { "@type": "Organization", name: "UX Core Technologies" },
+    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+  };
 }
 
 export default async function PostPage({
@@ -37,8 +59,13 @@ export default async function PostPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd(post)) }}
+      />
       <article className="pt-20 pb-16 sm:pt-28">
-        <Container className="max-w-3xl">
+        <Container className="max-w-4xl">
           <Reveal>
             <Link
               href="/blog"
@@ -81,13 +108,13 @@ export default async function PostPage({
                 fill
                 priority
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 768px"
+                sizes="(max-width: 896px) 100vw, 896px"
               />
             </div>
           </Reveal>
 
           <Reveal delay={0.1} className="mt-10">
-            <div className="flex max-w-2xl flex-col gap-5 text-base leading-relaxed text-foreground/90">
+            <div className="flex max-w-3xl flex-col gap-5 text-base leading-relaxed text-foreground/90">
               {post.content.map((block, i) => {
                 if (block.type === "heading") {
                   return (
