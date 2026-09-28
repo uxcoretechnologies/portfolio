@@ -14,8 +14,8 @@ export const site = {
   // The site's one published mobile number. `phoneNumber` is the same
   // number digits-only, country code first, no "+" or spaces — the exact
   // format tel:/wa.me hrefs require.
-  phone: "+91 96471 90348",
-  phoneNumber: "919647190348",
+  phone: "+91 98318 26441",
+  phoneNumber: "919831826441",
   address: "Salt Lake Sector V, Kolkata - 700091",
   social: {
     linkedin: "https://linkedin.com/company/ux-core-technologies",
