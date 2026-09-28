@@ -28,6 +28,7 @@ export function Footer() {
                 {site.email}
               </a>
             </li>
+            {/* Phone hidden for now — re-add to show it again.
             <li>
               <a
                 href={`tel:+${site.phoneNumber}`}
@@ -37,6 +38,7 @@ export function Footer() {
                 {site.phone}
               </a>
             </li>
+            */}
             <li className="inline-flex items-center gap-2.5 text-sm text-muted">
               <MapPin className="size-4 shrink-0 text-muted-2" />
               {site.address}

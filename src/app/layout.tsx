@@ -76,7 +76,8 @@ const organizationJsonLd = {
   description: site.description,
   url: site.url,
   email: site.email,
-  telephone: site.phone,
+  // Phone hidden for now — re-add to show it again.
+  // telephone: site.phone,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Kolkata",
