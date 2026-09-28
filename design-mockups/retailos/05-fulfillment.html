@@ -1,0 +1,132 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><span class="dot"></span>RetailOS</div>
+    <div class="nav-tabs">
+      <span class="nav-tab">Checkout</span>
+      <span class="nav-tab">Inventory</span>
+      <span class="nav-tab active">Orders</span>
+    </div>
+    <div class="top-spacer"></div>
+    <div class="sync"><span class="led"></span>Synced</div>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="tabs-row">
+      <div class="tab-item">Online &middot; 128</div>
+      <div class="tab-item active">Ship-from-store &middot; 34</div>
+      <div class="tab-item">Pickup &middot; 19</div>
+    </div>
+
+    <div class="card" style="flex:1;padding:6px 22px;display:flex;flex-direction:column;">
+      <div class="order-row">
+        <div><div class="order-id">#RS-88213</div><div class="order-cust">Maya Ferreira &middot; Riverside Mall</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill good"><span class="led"></span>On track</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">ETA tomorrow</div>
+      </div>
+
+      <div class="order-row">
+        <div><div class="order-id">#RS-88214</div><div class="order-cust">Owen Prescott &middot; Downtown Flagship</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line"></div>
+            <div class="step-dot"></div><div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill low"><span class="led"></span>Picking</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">ETA in 2 days</div>
+      </div>
+
+      <div class="order-row">
+        <div><div class="order-id">#RS-88215</div><div class="order-cust">Priya Nair &middot; Harbor Point</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill good"><span class="led"></span>Shipped</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">Delivered tomorrow</div>
+      </div>
+
+      <div class="order-row">
+        <div><div class="order-id">#RS-88216</div><div class="order-cust">Diego Alvarez &middot; Airport Terminal 2</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line"></div>
+            <div class="step-dot"></div><div class="step-line"></div>
+            <div class="step-dot"></div><div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill critical"><span class="led"></span>Delayed</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">Awaiting pick</div>
+      </div>
+
+      <div class="order-row">
+        <div><div class="order-id">#RS-88217</div><div class="order-cust">Sofia Marchetti &middot; Northside Outlet</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill good"><span class="led"></span>On track</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">ETA in 3 days</div>
+      </div>
+
+      <div class="order-row">
+        <div><div class="order-id">#RS-88218</div><div class="order-cust">Jordan Peck &middot; Riverside Mall</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line"></div>
+            <div class="step-dot"></div><div class="step-line"></div>
+            <div class="step-dot"></div><div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill low"><span class="led"></span>Queued</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">ETA in 4 days</div>
+      </div>
+
+      <div class="order-row">
+        <div><div class="order-id">#RS-88219</div><div class="order-cust">Amara Osei &middot; Downtown Flagship</div></div>
+        <div class="steps-wrap">
+          <div class="steps-row">
+            <div class="step-dot done"></div><div class="step-line done"></div>
+            <div class="step-dot done"></div><div class="step-line"></div>
+            <div class="step-dot"></div><div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <div class="labels-row"><span class="step-label">Placed</span><span class="step-label">Picked</span><span class="step-label">Packed</span><span class="step-label">Shipped</span></div>
+        </div>
+        <div class="pill good"><span class="led"></span>On track</div>
+        <div style="text-align:right;color:var(--muted);font-size:13px;">ETA in 2 days</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

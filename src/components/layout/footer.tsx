@@ -30,7 +30,7 @@ export function Footer() {
             </li>
             <li>
               <a
-                href={`tel:+${site.callNumber}`}
+                href={`tel:+${site.phoneNumber}`}
                 className="inline-flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-foreground"
               >
                 <Phone className="size-4 shrink-0 text-muted-2" />

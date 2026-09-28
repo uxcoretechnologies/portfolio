@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
@@ -63,6 +64,11 @@ function AFSLogo({ className = "h-16" }: { className?: string }) {
 }
 
 export default function AFSDeskPage() {
+  // Hidden: AFS Desk is unpublished across the site (case study + this
+  // standalone replica). Page markup below is left intact so it can be
+  // brought back by just removing this call.
+  notFound();
+
   return (
     <>
       {/* ══════════════════════════════════════════════════

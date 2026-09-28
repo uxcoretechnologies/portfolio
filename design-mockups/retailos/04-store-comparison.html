@@ -1,0 +1,63 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><span class="dot"></span>RetailOS</div>
+    <div class="nav-tabs">
+      <span class="nav-tab">Checkout</span>
+      <span class="nav-tab">Inventory</span>
+      <span class="nav-tab active">Stores</span>
+    </div>
+    <div class="top-spacer"></div>
+    <div class="sync"><span class="led"></span>Synced</div>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="chip-row">
+      <div class="chip active">Riverside Mall</div>
+      <div class="chip active">Airport T2</div>
+      <div class="chip active">Downtown Flagship</div>
+      <div class="chip">+21 more stores</div>
+    </div>
+
+    <div class="compare-row">
+      <div class="store-card card">
+        <div class="eyebrow">Riverside Mall</div>
+        <div class="store-metric"><span>Revenue (7d)</span><b class="mono-num">$62,140</b></div>
+        <div class="store-metric"><span>Conversion</span><b class="mono-num">34%</b></div>
+        <div class="store-metric"><span>Top category</span><b>Outerwear</b></div>
+        <svg viewBox="0 0 200 50" style="width:100%;height:44px;"><polyline points="0,38 30,30 60,34 90,20 120,26 150,12 180,18 200,8" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="store-card card leader">
+        <div class="leader-badge">Top performer</div>
+        <div class="eyebrow">Airport Terminal 2</div>
+        <div class="store-metric"><span>Revenue (7d)</span><b class="mono-num">$81,920</b></div>
+        <div class="store-metric"><span>Conversion</span><b class="mono-num">41%</b></div>
+        <div class="store-metric"><span>Top category</span><b>Travel accessories</b></div>
+        <svg viewBox="0 0 200 50" style="width:100%;height:44px;"><polyline points="0,34 30,28 60,20 90,22 120,10 150,14 180,6 200,4" fill="none" stroke="var(--warm)" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="store-card card">
+        <div class="eyebrow">Downtown Flagship</div>
+        <div class="store-metric"><span>Revenue (7d)</span><b class="mono-num">$74,305</b></div>
+        <div class="store-metric"><span>Conversion</span><b class="mono-num">29%</b></div>
+        <div class="store-metric"><span>Top category</span><b>Footwear</b></div>
+        <svg viewBox="0 0 200 50" style="width:100%;height:44px;"><polyline points="0,20 30,24 60,18 90,30 120,26 150,34 180,28 200,32" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+
+    <div class="table-card card" style="flex:1;">
+      <div class="table-head-row">
+        <h3 style="font-size:17px;">Leaderboard &middot; all locations</h3>
+        <span class="eyebrow">Ranked by 7-day revenue</span>
+      </div>
+      <div class="thead"><span>Store</span><span>Revenue</span><span>Conversion</span><span>Trend</span><span>Rank</span></div>
+      <div class="trow"><div><div class="store">Airport Terminal 2</div><div class="region">Northeast</div></div><div class="mono-num">$81,920</div><div class="mono-num">41%</div><div style="color:var(--good);font-weight:700;">&uarr; 12%</div><div class="mono-num" style="font-weight:800;">#1</div></div>
+      <div class="trow"><div><div class="store">Downtown Flagship</div><div class="region">Central</div></div><div class="mono-num">$74,305</div><div class="mono-num">29%</div><div style="color:var(--good);font-weight:700;">&uarr; 4%</div><div class="mono-num" style="font-weight:800;">#2</div></div>
+      <div class="trow"><div><div class="store">Riverside Mall</div><div class="region">Northeast</div></div><div class="mono-num">$62,140</div><div class="mono-num">34%</div><div style="color:var(--bad);font-weight:700;">&darr; 2%</div><div class="mono-num" style="font-weight:800;">#3</div></div>
+      <div class="trow"><div><div class="store">Harbor Point</div><div class="region">West</div></div><div class="mono-num">$58,760</div><div class="mono-num">31%</div><div style="color:var(--good);font-weight:700;">&uarr; 9%</div><div class="mono-num" style="font-weight:800;">#4</div></div>
+    </div>
+  </div>
+</div>
+</body></html>

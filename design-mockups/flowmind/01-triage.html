@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>FlowMind AI</div>
+    <div class="nav-tabs">
+      <span class="nav-tab active">Triage</span>
+      <span class="nav-tab">Review queue</span>
+      <span class="nav-tab">Performance</span>
+      <span class="nav-tab">Policies</span>
+    </div>
+    <div class="top-spacer"></div>
+    <span class="chip good">&#9679; 61% auto-resolved today</span>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="split">
+      <div class="inbox card">
+        <div class="inbox-head">
+          <h3 style="font-size:15px;">Incoming &middot; 47 today</h3>
+          <span class="eyebrow">Sorted by newest</span>
+        </div>
+        <div class="tick selected">
+          <div class="from">Marcus Webb</div>
+          <div class="subj">Can I get a refund for order #4821, it arrived damaged</div>
+          <span class="chip bad">Refund &middot; 94%</span>
+        </div>
+        <div class="tick">
+          <div class="from">Priya Anand</div>
+          <div class="subj">I forgot my password and the reset link expired</div>
+          <span class="chip agent">Password reset &middot; 99%</span>
+        </div>
+        <div class="tick">
+          <div class="from">Dae-jung Kim</div>
+          <div class="subj">Question about invoice INV-2291, tax line looks off</div>
+          <span class="chip warn">Invoice &middot; 78%</span>
+        </div>
+        <div class="tick">
+          <div class="from">Helena Osei</div>
+          <div class="subj">Can you cancel my subscription before renewal on the 14th</div>
+          <span class="chip agent">Cancellation &middot; 91%</span>
+        </div>
+        <div class="tick">
+          <div class="from">Tomas Rieger</div>
+          <div class="subj">Escalating &mdash; this is the third time I've been billed twice</div>
+          <span class="chip bad">Needs review &middot; 52%</span>
+        </div>
+        <div class="tick">
+          <div class="from">Alicia Ferrer</div>
+          <div class="subj">How do I add a teammate to our workspace plan</div>
+          <span class="chip good">How-to &middot; 97%</span>
+        </div>
+        <div class="tick">
+          <div class="from">Ben Okoro</div>
+          <div class="subj">Refund request for duplicate charge on card ending 4471</div>
+          <span class="chip bad">Refund &middot; 89%</span>
+        </div>
+      </div>
+
+      <div class="detail card">
+        <div class="detail-head">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <h3 style="font-size:16px;">Marcus Webb</h3>
+            <span class="mono" style="font-size:12px;color:var(--muted-2);">TICKET #4821</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--muted);margin-top:4px;">Received 3 minutes ago &middot; Order #38214</p>
+        </div>
+        <div class="detail-body">
+          <div class="msg-box">
+            &ldquo;Hi, I received order #38214 today but the packaging was crushed and one item is
+            damaged. Can I get a refund instead of a replacement? Thanks.&rdquo;
+          </div>
+          <div class="reason-box">
+            <div class="lbl">Classification reasoning</div>
+            <p>
+              Message references an existing order + damage &rarr; matches <b>Refund: damaged item</b>
+              intent. Order value $34.00 is under the $50 auto-approve threshold. No prior refund on
+              this order. Confidence 94% &mdash; above the 85% auto-resolve bar.
+            </p>
+          </div>
+          <div style="margin-top:auto;display:flex;gap:10px;">
+            <span class="chip bad">Refund &middot; damaged item</span>
+            <span class="chip muted">Order value $34.00</span>
+            <span class="chip muted">0 prior refunds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

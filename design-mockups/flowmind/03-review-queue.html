@@ -1,0 +1,74 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>FlowMind AI</div>
+    <div class="nav-tabs">
+      <span class="nav-tab">Triage</span>
+      <span class="nav-tab active">Review queue</span>
+      <span class="nav-tab">Performance</span>
+      <span class="nav-tab">Policies</span>
+    </div>
+    <div class="top-spacer"></div>
+    <span class="chip warn">&#9679; 6 awaiting review</span>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="card" style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+      <div class="qhead" style="padding-top:20px;">
+        <span>Ticket</span><span>Proposed action</span><span>Confidence</span><span>Risk</span><span>Decision</span>
+      </div>
+
+      <div class="qrow">
+        <div class="tid">#4901 &middot; Tomas Rieger</div>
+        <div class="action">Refund $128.00 &middot; duplicate charge</div>
+        <div class="mono">52%</div>
+        <span class="chip bad">High</span>
+        <div class="act-btns"><div class="act-btn approve">Approve</div><div class="act-btn">Edit</div><div class="act-btn">Override</div></div>
+      </div>
+
+      <div class="qrow">
+        <div class="tid">#4904 &middot; Grace Liu</div>
+        <div class="action">Cancel subscription, waive final invoice</div>
+        <div class="mono">68%</div>
+        <span class="chip warn">Medium</span>
+        <div class="act-btns"><div class="act-btn approve">Approve</div><div class="act-btn">Edit</div><div class="act-btn">Override</div></div>
+      </div>
+
+      <div class="qrow" style="background:var(--bad-soft);border-radius:12px;">
+        <div class="tid">#4907 &middot; Legal mention flagged</div>
+        <div class="action">Draft response re: data deletion request</div>
+        <div class="mono">71%</div>
+        <span class="chip bad">Compliance</span>
+        <div class="act-btns"><div class="act-btn approve">Approve</div><div class="act-btn">Edit</div><div class="act-btn">Override</div></div>
+      </div>
+
+      <div class="qrow">
+        <div class="tid">#4910 &middot; Dae-jung Kim</div>
+        <div class="action">Adjust invoice INV-2291 tax line</div>
+        <div class="mono">78%</div>
+        <span class="chip warn">Medium</span>
+        <div class="act-btns"><div class="act-btn approve">Approve</div><div class="act-btn">Edit</div><div class="act-btn">Override</div></div>
+      </div>
+
+      <div class="qrow">
+        <div class="tid">#4912 &middot; Amina Yusuf</div>
+        <div class="action">Refund $19.00 &middot; failed delivery</div>
+        <div class="mono">81%</div>
+        <span class="chip warn">Medium</span>
+        <div class="act-btns"><div class="act-btn approve">Approve</div><div class="act-btn">Edit</div><div class="act-btn">Override</div></div>
+      </div>
+
+      <div style="padding:20px 22px;border-top:1px solid var(--border);">
+        <div class="eyebrow" style="margin-bottom:12px;">Expanded &middot; #4901 draft vs. sent</div>
+        <div class="diff">
+          <span class="a">AI draft: full refund, no follow-up</span>
+          <span class="b">Sent: partial refund + fraud-team CC'd</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -8,7 +8,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { projects } from "@/lib/data/projects";
 
 export function WorkPreview() {
-  const featured = projects.slice(0, 4);
+  const featured = projects.filter((p) => !p.hidden).slice(0, 4);
 
   return (
     <section className="py-24 sm:py-32">

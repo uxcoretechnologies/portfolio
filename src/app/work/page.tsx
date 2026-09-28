@@ -18,6 +18,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function WorkPage() {
+  const visibleProjects = projects.filter((p) => !p.hidden);
+
   return (
     <>
       <section className="pt-20 pb-16 sm:pt-28">
@@ -35,7 +37,7 @@ export default function WorkPage() {
       <section className="pb-24 sm:pb-32">
         <Container>
           <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {projects.map((project) => (
+            {visibleProjects.map((project) => (
               <RevealItem key={project.slug}>
                 <Link href={`/work/${project.slug}`} className="group block">
                   <PlaceholderMedia

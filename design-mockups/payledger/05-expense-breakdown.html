@@ -1,0 +1,61 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="phone">
+  <div class="statusbar">
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="22" height="16" viewBox="0 0 22 16"><rect x="0" y="9" width="4" height="7" rx="1" fill="var(--ink)"/><rect x="6" y="6" width="4" height="10" rx="1" fill="var(--ink)"/><rect x="12" y="3" width="4" height="13" rx="1" fill="var(--ink)"/><rect x="18" y="0" width="4" height="16" rx="1" fill="var(--ink)" opacity="0.3"/></svg>
+      <svg width="30" height="16" viewBox="0 0 30 16"><rect x="1" y="1" width="24" height="14" rx="3.5" stroke="var(--ink)" stroke-width="1.5" fill="none"/><rect x="3" y="3" width="17" height="10" rx="2" fill="var(--ink)"/><rect x="27" y="5.5" width="2" height="5" rx="1" fill="var(--ink)"/></svg>
+    </div>
+  </div>
+
+  <div class="appbar">
+    <div><div class="greet">September</div><div class="title">Expenses</div></div>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="content">
+    <div class="card" style="padding:10px 0 26px;">
+      <div class="donut-wrap" style="position:relative;">
+        <svg width="280" height="280" viewBox="0 0 200 200">
+          <g transform="rotate(-90 100 100)">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--border)" stroke-width="26"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--primary)" stroke-width="26" stroke-dasharray="206 296.4" stroke-dashoffset="0"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent2)" stroke-width="26" stroke-dasharray="90 412.4" stroke-dashoffset="-206"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#6b4fd8" stroke-width="26" stroke-dasharray="70 432.4" stroke-dashoffset="-296"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#c4841d" stroke-width="26" stroke-dasharray="55 447.4" stroke-dashoffset="-366"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#b0392e" stroke-width="26" stroke-dasharray="45 457.4" stroke-dashoffset="-421"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#8a9a92" stroke-width="26" stroke-dasharray="36.4 466" stroke-dashoffset="-466"/>
+          </g>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <div style="font-size:30px;font-weight:800;color:var(--ink);">$15,120</div>
+          <div style="font-size:13px;color:var(--muted-2);margin-top:2px;">total spend</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:10px 26px 20px;flex:1;">
+      <div class="cat-row"><span class="cat-dot" style="background:var(--primary);"></span><div class="cat-info"><div class="n">Payroll</div><div class="pct">41% of spend</div></div><div class="cat-amt"><div class="v mono-num">$6,199</div><div class="tr up">&uarr; 3%</div></div></div>
+      <div class="cat-row"><span class="cat-dot" style="background:var(--accent2);"></span><div class="cat-info"><div class="n">Rent &amp; facilities</div><div class="pct">18% of spend</div></div><div class="cat-amt"><div class="v mono-num">$2,722</div><div class="tr">&mdash;</div></div></div>
+      <div class="cat-row"><span class="cat-dot" style="background:#6b4fd8;"></span><div class="cat-info"><div class="n">Office supplies</div><div class="pct">14% of spend</div></div><div class="cat-amt"><div class="v mono-num">$2,117</div><div class="tr down">&darr; 6%</div></div></div>
+      <div class="cat-row"><span class="cat-dot" style="background:#c4841d;"></span><div class="cat-info"><div class="n">Software</div><div class="pct">11% of spend</div></div><div class="cat-amt"><div class="v mono-num">$1,663</div><div class="tr up">&uarr; 9%</div></div></div>
+      <div class="cat-row"><span class="cat-dot" style="background:#b0392e;"></span><div class="cat-info"><div class="n">Marketing</div><div class="pct">9% of spend</div></div><div class="cat-amt"><div class="v mono-num">$1,361</div><div class="tr">&mdash;</div></div></div>
+      <div class="cat-row"><span class="cat-dot" style="background:#8a9a92;"></span><div class="cat-info"><div class="n">Other</div><div class="pct">7% of spend</div></div><div class="cat-amt"><div class="v mono-num">$1,058</div><div class="tr">&mdash;</div></div></div>
+    </div>
+
+    <div class="card" style="padding:26px 30px;">
+      <div class="eyebrow" style="margin-bottom:6px;">Compared to August</div>
+      <p style="font-size:14.5px;color:var(--muted);line-height:1.6;">Total spend is up 4% month over month, driven mostly by a one-time software renewal. Payroll and rent stayed flat.</p>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7M5 10v9h14v-9"/></svg>Home</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Accounts</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Add</div>
+    <div class="tab active"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M12 19V4M20 19v-6"/></svg>Insights</div>
+  </div>
+</div>
+</body></html>

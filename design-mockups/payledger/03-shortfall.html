@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="phone">
+  <div class="statusbar">
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="22" height="16" viewBox="0 0 22 16"><rect x="0" y="9" width="4" height="7" rx="1" fill="var(--ink)"/><rect x="6" y="6" width="4" height="10" rx="1" fill="var(--ink)"/><rect x="12" y="3" width="4" height="13" rx="1" fill="var(--ink)"/><rect x="18" y="0" width="4" height="16" rx="1" fill="var(--ink)" opacity="0.3"/></svg>
+      <svg width="30" height="16" viewBox="0 0 30 16"><rect x="1" y="1" width="24" height="14" rx="3.5" stroke="var(--ink)" stroke-width="1.5" fill="none"/><rect x="3" y="3" width="17" height="10" rx="2" fill="var(--ink)"/><rect x="27" y="5.5" width="2" height="5" rx="1" fill="var(--ink)"/></svg>
+    </div>
+  </div>
+
+  <div class="appbar">
+    <div><div class="greet">Forecast alert</div><div class="title">Cash flow warning</div></div>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="content">
+    <div class="warn-card">
+      <div class="lbl">&#9888; Projected shortfall</div>
+      <div class="amt mono-num">&minus;$1,240</div>
+      <div class="when">on Nov 18, if nothing changes</div>
+    </div>
+
+    <div class="card" style="padding:26px 30px;">
+      <div class="eyebrow" style="margin-bottom:4px;">Contributing factors</div>
+      <div class="factor-row"><span>Payroll run</span><span class="amt mono-num">&minus;$6,200</span></div>
+      <div class="factor-row"><span>Northline Supplies invoice due</span><span class="amt mono-num">&minus;$1,480</span></div>
+      <div class="factor-row"><span>Expected inflow (invoices)</span><span class="amt mono-num" style="color:var(--primary);">+$6,440</span></div>
+    </div>
+
+    <div class="eyebrow" style="padding-left:4px;">Suggested actions</div>
+    <div class="action-row">
+      <div class="action-item"><div><div class="t">Delay the supplies payment</div><div class="d">Push due date to Nov 25</div></div><span style="color:var(--primary);font-weight:700;">&rsaquo;</span></div>
+      <div class="action-item"><div><div class="t">Draw $2,000 from credit line</div><div class="d">Covers the gap with room to spare</div></div><span style="color:var(--primary);font-weight:700;">&rsaquo;</span></div>
+      <div class="action-item"><div><div class="t">Snooze this alert</div><div class="d">Remind me again in 3 days</div></div><span style="color:var(--muted-2);font-weight:700;">&rsaquo;</span></div>
+    </div>
+
+    <div class="card" style="padding:26px 30px;">
+      <div class="eyebrow" style="margin-bottom:6px;">Forecast confidence</div>
+      <p style="font-size:14.5px;color:var(--muted);line-height:1.6;">Based on confirmed inflows and outflows only &mdash; not a prediction. This forecast updates the moment a new transaction, invoice, or bill lands.</p>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <div class="tab active"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7M5 10v9h14v-9"/></svg>Home</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Accounts</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Add</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M12 19V4M20 19v-6"/></svg>Insights</div>
+  </div>
+</div>
+</body></html>

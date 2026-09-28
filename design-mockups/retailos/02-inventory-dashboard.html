@@ -1,0 +1,90 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><span class="dot"></span>RetailOS</div>
+    <div class="nav-tabs">
+      <span class="nav-tab">Checkout</span>
+      <span class="nav-tab active">Inventory</span>
+      <span class="nav-tab">Orders</span>
+    </div>
+    <div class="top-spacer"></div>
+    <div class="sync"><span class="led"></span>Synced</div>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="kpi-row">
+      <div class="kpi card">
+        <div class="eyebrow">Stock accuracy</div>
+        <div class="val">98.2%</div>
+        <div class="delta up">&uarr; 2.1% vs last month</div>
+      </div>
+      <div class="kpi card">
+        <div class="eyebrow">Open purchase orders</div>
+        <div class="val">14</div>
+        <div class="delta" style="color:var(--muted);">Across 9 stores</div>
+      </div>
+      <div class="kpi card flag">
+        <div class="eyebrow">Low-stock SKUs</div>
+        <div class="val">23</div>
+        <div class="delta down">&uarr; 6 since Monday</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:1;min-height:0;">
+      <div class="table-card card">
+        <div class="table-head-row">
+          <h3 style="font-size:17px;">All locations</h3>
+          <span class="eyebrow">24 stores</span>
+        </div>
+        <div class="thead">
+          <span>Store</span><span>On-hand units</span><span>Sell-through</span><span>Restock ETA</span><span>Health</span>
+        </div>
+        <div class="trow">
+          <div><div class="store">Riverside Mall</div><div class="region">Northeast</div></div>
+          <div class="mono-num">4,812</div><div class="mono-num">71%</div><div class="mono-num">&mdash;</div>
+          <div class="pill good"><span class="led"></span>Good</div>
+        </div>
+        <div class="trow row-flag">
+          <div><div class="store">Airport Terminal 2</div><div class="region">Northeast</div></div>
+          <div class="mono-num">1,203</div><div class="mono-num">88%</div><div class="mono-num">2 days</div>
+          <div class="pill low"><span class="led"></span>Low</div>
+        </div>
+        <div class="trow">
+          <div><div class="store">Downtown Flagship</div><div class="region">Central</div></div>
+          <div class="mono-num">6,540</div><div class="mono-num">64%</div><div class="mono-num">&mdash;</div>
+          <div class="pill good"><span class="led"></span>Good</div>
+        </div>
+        <div class="trow">
+          <div><div class="store">Northside Outlet</div><div class="region">Central</div></div>
+          <div class="mono-num">3,096</div><div class="mono-num">59%</div><div class="mono-num">&mdash;</div>
+          <div class="pill good"><span class="led"></span>Good</div>
+        </div>
+        <div class="trow">
+          <div><div class="store">Harbor Point</div><div class="region">West</div></div>
+          <div class="mono-num">418</div><div class="mono-num">94%</div><div class="mono-num">Overdue</div>
+          <div class="pill critical"><span class="led"></span>Critical</div>
+        </div>
+      </div>
+
+      <div class="rail">
+        <div class="rail-card card">
+          <div class="eyebrow" style="margin-bottom:10px;">Top 5 SKUs by velocity</div>
+          <div class="velo-row"><div><div class="name">Trail Runner Tee</div><div class="velo-bar-track"><div class="velo-bar-fill" style="width:88%;"></div></div></div><span class="mono-num">312/wk</span></div>
+          <div class="velo-row"><div><div class="name">Insulated Water Bottle</div><div class="velo-bar-track"><div class="velo-bar-fill" style="width:71%;"></div></div></div><span class="mono-num">248/wk</span></div>
+          <div class="velo-row"><div><div class="name">Recycled Wool Beanie</div><div class="velo-bar-track"><div class="velo-bar-fill" style="width:54%;"></div></div></div><span class="mono-num">190/wk</span></div>
+          <div class="velo-row"><div><div class="name">Ankle Socks 3-pack</div><div class="velo-bar-track"><div class="velo-bar-fill" style="width:41%;"></div></div></div><span class="mono-num">142/wk</span></div>
+        </div>
+        <div class="rail-card card" style="flex:1;display:flex;flex-direction:column;">
+          <div class="eyebrow" style="margin-bottom:10px;">Stock accuracy &middot; 30 days</div>
+          <svg viewBox="0 0 280 110" preserveAspectRatio="none" style="flex:1;width:100%;">
+            <polyline points="0,80 40,70 80,74 120,50 160,55 200,30 240,34 280,14" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

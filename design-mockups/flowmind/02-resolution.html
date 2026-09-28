@@ -1,0 +1,75 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>FlowMind AI</div>
+    <div class="nav-tabs">
+      <span class="nav-tab active">Triage</span>
+      <span class="nav-tab">Review queue</span>
+      <span class="nav-tab">Performance</span>
+      <span class="nav-tab">Policies</span>
+    </div>
+    <div class="top-spacer"></div>
+    <span class="mono" style="font-size:12px;color:var(--muted-2);">TICKET #4821</span>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="split">
+      <div class="card thread">
+        <div class="eyebrow" style="margin-bottom:6px;">Conversation</div>
+        <div class="bubble"><div class="who">Marcus Webb</div>Hi, I received order #38214 today but the packaging was crushed and one item is damaged. Can I get a refund instead of a replacement?</div>
+        <div class="bubble" style="background:var(--agent-soft);align-self:flex-end;"><div class="who" style="color:var(--agent);">FlowMind agent</div>Sorry about that, Marcus &mdash; I've confirmed the damage falls under our replacement policy and processed a full refund of $34.00 to your original payment method. You'll see it in 3&ndash;5 business days.</div>
+        <div class="bubble"><div class="who">Marcus Webb</div>That was fast, thank you!</div>
+        <div style="margin-top:auto;">
+          <span class="chip good">&#9679; Auto-resolved &middot; 1m 42s</span>
+        </div>
+      </div>
+
+      <div class="card trail">
+        <div class="trail-head">
+          <h3 style="font-size:15px;">Reasoning trail</h3>
+          <span class="chip good">Resolved</span>
+        </div>
+
+        <div class="trail-step">
+          <div class="trail-dot"></div><div class="trail-line"></div>
+          <div class="trail-content">
+            <div class="t">Classified as Refund &middot; damaged item</div>
+            <div class="ts mono">11:42:03 &middot; confidence 94%</div>
+          </div>
+        </div>
+        <div class="trail-step">
+          <div class="trail-dot"></div><div class="trail-line"></div>
+          <div class="trail-content">
+            <div class="t">Looked up order #38214</div>
+            <div class="ts mono">11:42:04 &middot; value $34.00, placed 2 days ago</div>
+          </div>
+        </div>
+        <div class="trail-step">
+          <div class="trail-dot"></div><div class="trail-line"></div>
+          <div class="trail-content">
+            <div class="t">Verified against refund policy</div>
+            <div class="ts mono">11:42:05 &middot; under $50 auto-approve threshold</div>
+          </div>
+        </div>
+        <div class="trail-step">
+          <div class="trail-dot"></div><div class="trail-line"></div>
+          <div class="trail-content">
+            <div class="t">Issued refund of $34.00</div>
+            <div class="ts mono">11:42:06 &middot; original payment method</div>
+          </div>
+        </div>
+        <div class="trail-step">
+          <div class="trail-dot" style="background:var(--good);"></div>
+          <div class="trail-content">
+            <div class="t">Marked resolved, customer notified</div>
+            <div class="ts mono">11:43:45</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

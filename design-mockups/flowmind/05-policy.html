@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="canvas">
+  <div class="topbar">
+    <div class="wordmark"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>FlowMind AI</div>
+    <div class="nav-tabs">
+      <span class="nav-tab">Triage</span>
+      <span class="nav-tab">Review queue</span>
+      <span class="nav-tab">Performance</span>
+      <span class="nav-tab active">Policies</span>
+    </div>
+    <div class="top-spacer"></div>
+    <span class="chip agent">Audit log &middot; 1,204 entries</span>
+    <div class="avatar"></div>
+  </div>
+
+  <div class="body-pad">
+    <div class="split">
+      <div class="card" style="flex:1.6;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="padding:20px 22px;border-bottom:1px solid var(--border);">
+          <h3 style="font-size:15px;">Auto-resolve rules</h3>
+        </div>
+        <div class="policy-row">
+          <div><div class="name">Refunds under $50 &rarr; auto-approve</div><div class="desc">No prior refund on the same order</div></div>
+          <div class="toggle on"><div class="knob"></div></div>
+        </div>
+        <div class="policy-row">
+          <div><div class="name">Password resets &rarr; auto-approve</div><div class="desc">Identity confirmed via account email</div></div>
+          <div class="toggle on"><div class="knob"></div></div>
+        </div>
+        <div class="policy-row">
+          <div><div class="name">Subscription cancellations &rarr; auto-approve</div><div class="desc">Outside any active contract term</div></div>
+          <div class="toggle on"><div class="knob"></div></div>
+        </div>
+        <div class="policy-row">
+          <div><div class="name">Invoice corrections &rarr; draft only</div><div class="desc">Always routed to a human for approval</div></div>
+          <div class="toggle"><div class="knob"></div></div>
+        </div>
+        <div class="policy-row" style="background:var(--bad-soft);border-radius:12px;">
+          <div><div class="name">Legal / compliance mentions &rarr; always escalate</div><div class="desc">Never auto-resolved, regardless of confidence</div></div>
+          <div class="toggle on" style="background:var(--bad);"><div class="knob"></div></div>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;padding:24px;display:flex;flex-direction:column;gap:22px;">
+        <div>
+          <div class="eyebrow" style="margin-bottom:12px;">Confidence threshold</div>
+          <div class="slider-track"><div class="slider-fill" style="width:85%;"></div><div class="slider-handle" style="left:85%;"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--muted);"><span>0%</span><span class="mono" style="font-weight:600;color:var(--agent);">85% auto-resolve</span><span>100%</span></div>
+        </div>
+        <div style="height:1px;background:var(--border);"></div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:10px;">Recent audit entries</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:12.5px;">
+            <div style="display:flex;justify-content:space-between;"><span>#4901 escalated &middot; below threshold</span><span class="mono" style="color:var(--muted-2);">11:58</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>#4899 auto-resolved &middot; refund</span><span class="mono" style="color:var(--muted-2);">11:51</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Policy edited by J. Alden</span><span class="mono" style="color:var(--muted-2);">09:14</span></div>
+          </div>
+        </div>
+        <div style="margin-top:auto;">
+          <span class="chip agent">View full audit log &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -6,6 +6,10 @@ export type Project = {
   industry: string;
   type: string;
   summary: string;
+  // Unpublished: excluded from /work, the homepage preview, "More work"
+  // cross-links, and the sitemap — its detail page 404s too. Data stays
+  // intact so it can be brought back by just flipping this off.
+  hidden?: boolean;
   challenge: string;
   solution: string;
   results: { label: string; value: string }[];
@@ -62,6 +66,7 @@ export const projects: Project[] = [
     name: "AFS Desk",
     industry: "Sales & CRM Software",
     type: "Mobile Application",
+    hidden: true,
     summary:
       "A multi-tenant CRM platform that brings lead management, follow-ups, and team activity into one mobile-first workspace.",
     challenge:
@@ -239,11 +244,11 @@ export const projects: Project[] = [
     approach:
       "Inventory sync was built as the backbone first — every other feature (dashboards, alerts, restock suggestions) reads from that same real-time stock ledger, so numbers never drift between the POS, the warehouse, and the storefront. Store rollout was staged in batches of five, giving the team room to fix real-world edge cases before the next batch went live.",
     gallery: [
-      "POS checkout screen",
-      "Multi-location inventory dashboard",
-      "Low-stock alert & restock flow",
-      "Store performance comparison view",
-      "Order fulfillment tracking",
+      { src: "/images/work/retailos/retailos-screen-1.png", alt: "RetailOS POS checkout screen with cart, totals, and payment methods" },
+      { src: "/images/work/retailos/retailos-screen-2.png", alt: "RetailOS multi-location inventory dashboard with stock accuracy and store health" },
+      { src: "/images/work/retailos/retailos-screen-3.png", alt: "RetailOS low-stock alert and restock suggestion flow" },
+      { src: "/images/work/retailos/retailos-screen-4.png", alt: "RetailOS store performance comparison and leaderboard" },
+      { src: "/images/work/retailos/retailos-screen-5.png", alt: "RetailOS order fulfillment tracking with stepped status" },
     ],
     testimonial: {
       quote:
@@ -298,11 +303,11 @@ export const projects: Project[] = [
     approach:
       "The agent was scoped deliberately narrow at launch — three ticket types it could fully resolve — and every action it took, correct or not, was logged and reviewed weekly to retrain its confidence thresholds before adding the next category. That review loop, more than any single model upgrade, is what got auto-resolution from acceptable to trusted.",
     gallery: [
-      "Ticket triage & classification view",
-      "Agent resolution with reasoning trail",
-      "Human review & override queue",
-      "Automation performance dashboard",
-      "Policy & guardrail configuration",
+      { src: "/images/work/flowmind-ai/flowmind-ai-screen-1.png", alt: "FlowMind AI ticket triage and classification inbox" },
+      { src: "/images/work/flowmind-ai/flowmind-ai-screen-2.png", alt: "FlowMind AI agent resolution with a step-by-step reasoning trail" },
+      { src: "/images/work/flowmind-ai/flowmind-ai-screen-3.png", alt: "FlowMind AI human review and override queue" },
+      { src: "/images/work/flowmind-ai/flowmind-ai-screen-4.png", alt: "FlowMind AI automation performance dashboard" },
+      { src: "/images/work/flowmind-ai/flowmind-ai-screen-5.png", alt: "FlowMind AI policy and guardrail configuration screen" },
     ],
     testimonial: {
       quote:
@@ -358,11 +363,11 @@ export const projects: Project[] = [
     approach:
       "Forecasting was kept intentionally simple and explainable at launch — a rolling view of confirmed inflows and outflows, not a black-box prediction — because owners needed to trust the number enough to act on it immediately. More sophisticated forecasting was layered in only after that trust was established.",
     gallery: [
-      "Live cash-flow dashboard",
-      "Receipt capture & auto-categorization",
-      "Upcoming shortfall forecast alert",
-      "Multi-account overview",
-      "Expense breakdown by category",
+      { src: "/images/work/payledger/payledger-screen-1.png", alt: "PayLedger live cash-flow dashboard with 30-day forecast" },
+      { src: "/images/work/payledger/payledger-screen-2.png", alt: "PayLedger receipt capture with auto-categorization" },
+      { src: "/images/work/payledger/payledger-screen-3.png", alt: "PayLedger upcoming shortfall forecast alert" },
+      { src: "/images/work/payledger/payledger-screen-4.png", alt: "PayLedger multi-account overview" },
+      { src: "/images/work/payledger/payledger-screen-5.png", alt: "PayLedger expense breakdown by category" },
     ],
     testimonial: {
       quote:

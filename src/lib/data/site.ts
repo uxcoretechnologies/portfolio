@@ -11,13 +11,11 @@ export const site = {
   // mismatch would have shipped wrong canonical/OG URLs.
   url: "https://www.uxcoretechnologies.com",
   email: "info@uxcoretechnologies.com",
-  // Call and WhatsApp are two different numbers — kept as separate pairs
-  // (a display string + a digits-only one for the tel:/wa.me href, country
-  // code first, no "+" or spaces).
-  phone: "+91 90515 50532",
-  callNumber: "919051550532",
-  whatsappPhone: "+91 96471 90348",
-  whatsappNumber: "919647190348",
+  // The site's one published mobile number. `phoneNumber` is the same
+  // number digits-only, country code first, no "+" or spaces — the exact
+  // format tel:/wa.me hrefs require.
+  phone: "+91 96471 90348",
+  phoneNumber: "919647190348",
   address: "Salt Lake Sector V, Kolkata - 700091",
   social: {
     linkedin: "https://linkedin.com/company/ux-core-technologies",

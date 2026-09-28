@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Sora, Caveat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { ContactFab } from "@/components/layout/contact-fab";
 import { site } from "@/lib/data/site";
 
 const geistSans = Geist({
@@ -107,7 +106,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
-        <ContactFab />
       </body>
     </html>
   );

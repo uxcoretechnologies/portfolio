@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { pageMetadata, absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.filter((p) => !p.hidden).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -28,7 +28,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  if (!project) return {};
+  if (!project || project.hidden) return {};
   return pageMetadata({
     title: `${project.name} — Case Study`,
     description: project.summary,
@@ -59,9 +59,9 @@ export default async function ProjectPage({
 }) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  if (!project) notFound();
+  if (!project || project.hidden) notFound();
 
-  const otherProjects = projects.filter((p) => p.slug !== slug).slice(0, 2);
+  const otherProjects = projects.filter((p) => p.slug !== slug && !p.hidden).slice(0, 2);
   const hasOverview = !!(project.client || project.servicesProvided || project.techStack);
   const hasShowcase = !!(project.showcaseHeadline || project.showcaseTagline);
   const hasRequirements = !!(project.requirements || project.approach);
